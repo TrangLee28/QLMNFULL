@@ -1,0 +1,23 @@
+﻿Generated model file: TruongMamNonModel.edmx.
+Loading metadata from the database took 00:00:01.8284584.
+Generating the model took 00:00:02.4486602.
+Added the connection string to the Web.Config file.
+Writing the .edmx file took 00:00:00.0008116.
+Generated model file: TruongMamNonModel.edmx.
+Loading metadata from the database took 00:00:00.6944597.
+Generating the model took 00:00:00.3503737.
+Generated model file: TruongMamNonModel.edmx.
+Loading metadata from the database took 00:00:00.6559455.
+Generating the model took 00:00:01.0994796.
+Generated model file: TruongMamNonModel.edmx.
+Loading metadata from the database took 00:00:00.5680266.
+Generating the model took 00:00:00.3615115.
+Generated model file: TruongMamNonModel.edmx.
+Loading metadata from the database took 00:00:00.7439375.
+Generating the model took 00:00:01.0477802.
+Generated model file: TruongMamNonModel.edmx.
+Loading metadata from the database took 00:00:00.6588157.
+Generating the model took 00:00:01.1115480.
+Generated model file: TruongMamNonModel.edmx.
+Loading metadata from the database took 00:00:00.6915022.
+Generating the model took 00:00:01.0996816.

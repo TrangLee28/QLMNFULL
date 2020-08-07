@@ -1,0 +1,22 @@
+﻿Sorry, there was a problem downloading some files from OneDrive. Please try again.
+
+db.lock - https://onedrive.live.com/?cid=bb4220d3b0b5b7a2&id=BB4220D3B0B5B7A2%2184920&action=Download&authKey=!AIXzg9RB3ng_L60
+
+test.js - https://onedrive.live.com/?cid=bb4220d3b0b5b7a2&id=BB4220D3B0B5B7A2%2178718&action=Download&authKey=!AIXzg9RB3ng_L60
+
+Models.SchoolManagerModel.Context.cs.dll - https://onedrive.live.com/?cid=bb4220d3b0b5b7a2&id=BB4220D3B0B5B7A2%21100629&action=Download&authKey=!AIXzg9RB3ng_L60
+
+Models.TruongMamNonModel.Context.cs.dll - https://onedrive.live.com/?cid=bb4220d3b0b5b7a2&id=BB4220D3B0B5B7A2%2178855&action=Download&authKey=!AIXzg9RB3ng_L60
+
+QuanLyCongViec.csproj.CopyComplete - https://onedrive.live.com/?cid=bb4220d3b0b5b7a2&id=BB4220D3B0B5B7A2%2177409&action=Download&authKey=!AIXzg9RB3ng_L60
+
+SchoolManager.csproj.CopyComplete - https://onedrive.live.com/?cid=bb4220d3b0b5b7a2&id=BB4220D3B0B5B7A2%2177404&action=Download&authKey=!AIXzg9RB3ng_L60
+
+test.js - https://onedrive.live.com/?cid=bb4220d3b0b5b7a2&id=BB4220D3B0B5B7A2%2190940&action=Download&authKey=!AIXzg9RB3ng_L60
+
+Models.TruongMamNonModel.Context.cs.dll - https://onedrive.live.com/?cid=bb4220d3b0b5b7a2&id=BB4220D3B0B5B7A2%2178858&action=Download&authKey=!AIXzg9RB3ng_L60
+
+SchoolManager.csproj.CopyComplete - https://onedrive.live.com/?cid=bb4220d3b0b5b7a2&id=BB4220D3B0B5B7A2%2177414&action=Download&authKey=!AIXzg9RB3ng_L60
+
+
+
