@@ -57,46 +57,47 @@
                             <tbody>
                                 @foreach (var item in db.DonThuocs.Where(x => x.Id_PH == getid).ToList())
                                 {
-                                    <tr id="rowAcc_@item.Id">
+                                <tr id="rowAcc_@item.Id">
+                                    <td>
+                                        <h6 class="mb-0">@item.Ten</h6>
+
+                                    </td>
+                                    <td>
+                                        <span class="text-info">@item.HamLuong</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-danger">@item.SoLuong</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-dark">@item.DonVi</span>
+                                    </td>
+                                    <td>
+                                        <span>@item.HocSinh.HoTen</span>
+                                    </td>
+                                    <td>
+                                        <span>@item.CachDung</span>
+                                    </td>
+
+                                    @if (!item.TrangThai)
+                                    {
                                         <td>
-                                            <h6 class="mb-0">@item.Ten</h6>
+                                            @Html.ActionLink("Đã xong", "HienDonThuoc", new { id = item.Id }, new { @class = "text-white btn  btn-warning btn-sm", @title = "Bấm để hiện" })
 
                                         </td>
-                                        <td>
-                                            <span class="text-info">@item.HamLuong</span>
-                                        </td>
-                                        <td>
-                                            <span class="text-danger">@item.SoLuong</span>
-                                        </td>
-                                        <td>
-                                            <span class="text-dark">@item.DonVi</span>
-                                        </td>
-                                        <td>
-                                            <span>@item.CachDung</span>
-                                        </td>
-                                        <td>
-                                            <span>@item.HocSinh.HoTen</span>
-                                        </td>
-                                        @if (!item.TrangThai)
-                                        {
-                                            <td>
-                                                @Html.ActionLink("Đã xong", "HienDonThuoc", new { id = item.Id }, new { @class = "text-white btn  btn-warning btn-sm", @title = "Bấm để hiện" })
+                                    }
+                                    else
+                                    {
 
-                                            </td>
-                                        }
-                                        else
-                                        {
-
-                                            <td>
-                                                @Html.ActionLink("Đang thực hiện", "HienDonThuoc", new { id = item.Id }, new { @class = "text-white btn  btn-success btn-sm", @title = "Bấm để ẩn" })
-
-                                            </td>
-                                        }
                                         <td>
-                                            <a class="btn btn-sm btn-outline-secondary" title="Sửa" href="@Url.Action("ChiTiet", "DonThuoc", new { id = item.Id})"><i class="fa fa-edit"></i></a>
-                                            <a class="btn btn-sm btn-outline-danger" title="Xóa" onclick="DeleteAcc('@item.Id')"><i class="fa fa-trash-o"></i></a>
+                                            @Html.ActionLink("Đang thực hiện", "HienDonThuoc", new { id = item.Id }, new { @class = "text-white btn  btn-success btn-sm", @title = "Bấm để ẩn" })
+
                                         </td>
-                                    </tr>
+                                    }
+                                    <td>
+                                        <a class="btn btn-sm btn-outline-secondary" title="Sửa" href="@Url.Action("ChiTiet", "DonThuoc", new { id = item.Id})"><i class="fa fa-edit"></i></a>
+                                        <a class="btn btn-sm btn-outline-danger" title="Xóa" onclick="DeleteAcc('@item.Id')"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                </tr>
 
                                 }
                             </tbody>
@@ -116,7 +117,6 @@
                             <input type="text" class="form-control col-md-3 m-2" name="HamLuong" placeholder="Hàm lượng">
                             <input type="number" class="form-control col-md-3 m-2" name="SoLuong" placeholder="Số lượng">
                             <input type="text" class="form-control col-md-3 m-2" name="DonVi" placeholder="Đơn vị">
-                            <textarea name="CachDung" class="form-control col-md-6 m-2" rows="3" placeholder="Cách dùng"></textarea>
                             <select title="Học sinh" class="form-control col-md-6 m-2" name="Id_HS" required>
                                 <option selected value="">Lựa chọn học sinh áp dụng</option>
                                 @foreach (var item in me.PhuHuynh.PhuHuynh_HocSinh.ToList())
@@ -124,6 +124,8 @@
                                     <option value="@item.HocSinh.Id">@item.HocSinh.HoTen</option>
                                 }
                             </select>
+                            <textarea name="CachDung" class="form-control col-md-6 m-2" rows="3" placeholder="Cách dùng"></textarea>
+
                         </div>
                         <input type="submit" value="Thêm mới" class="m-2 btn btn-danger" />
                     </div>
