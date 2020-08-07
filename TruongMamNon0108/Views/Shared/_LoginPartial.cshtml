@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <li>
+            @Html.ActionLink("Xin chào " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </li>
+        if (Request.IsAuthenticated && (User.IsInRole("Quản trị viên")|| User.IsInRole("Dinh dưỡng") || User.IsInRole("Giáo viên") || User.IsInRole("VanPhong")))
+        {
+            <li><a href="@Url.Action("Index", "Admin" )">Quản lý</a></li>
+        }
+        if (Request.IsAuthenticated && (User.IsInRole("Phụ huynh")))
+        {
+            <li><a href="@Url.Action("Index", "DonThuoc" )">Đơn dặn thuốc</a></li>
+        }
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Đăng xuất</a></li>
+    }
+}
+else
+{
+    @*<li>@Html.ActionLink("Đăng ký", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
+    <li>@Html.ActionLink("Đăng nhập", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+}

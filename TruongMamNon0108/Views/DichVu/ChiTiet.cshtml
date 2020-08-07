@@ -1,0 +1,145 @@
+﻿
+@using SchoolManager.Models;
+@model SchoolManager.Models.DichVuModel
+@{
+    ViewBag.Title = "Dịch vụ";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    TruongMamNonEntities db = new TruongMamNonEntities();
+}
+
+<script src="~/Content/ckeditor/ckeditor.js"></script>
+<script src="~/Content/ckfinder/ckfinder.js"></script>
+<div class="block-header">
+    <div class="row">
+        <div class="col-lg-6 col-md-8 col-sm-12">
+            <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a> Dánh sách Dịch vụ</h2>
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Admin")"><i class="icon-home"></i></a></li>
+                <li class="breadcrumb-item">Quản trị</li>
+                <li class="breadcrumb-item active">Dịch vụ</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row clearfix">
+    <div class="col-lg-12">
+        <h2 class="text-center text-primary">Danh sách đăng ký dịch vụ</h2>
+
+        <div class="table-responsive">
+            <table class="table table-hover js-basic-example dataTable table-custom table-striped m-b-0 c_list">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Học sinh</th>
+                        <th>Lớp</th>
+                        <th>Ngày đăng ký</th>
+                        <th>Giá</th>
+                        <th>Trạng Thái</th>
+                        <th>Ghi chú</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in db.ChiTietDangKyDichVus.ToList())
+                    {
+                        <tr id="rowAcc_@item.Id">
+                            <td>
+                                <a href="@Url.Action("ChitietHocSinh", "VanPhong", new { id = item.MaHocSinh })">@item.HocSinh.HoTen</a>
+
+                            </td>
+                            <td>
+                                <a href="@Url.Action("ChitietLopHoc", "VanPhong", new { id = item.HocSinh.LopHoc})">@item.HocSinh.Lop.Lop1</a>
+
+                            </td>
+                            <td>
+                                <span class="badge text-primary">@item.DangKyDichVu.ThoiGianDK.ToString("dd/MM/yyyy")</span>
+                            </td>
+
+                            <td>
+                                <span class="badge text-info">@item.DangKyDichVu.DichVu.Gia</span>
+                            </td>
+                            <td>
+                                @if (item.DangKyDichVu.TrangThai)
+                                {
+                                    <span class="badge text-success">Đã thanh toán</span>
+                                }
+                                else
+                                {
+                                    <span class="badge text-danger">Chưa thanh toán</span>
+                                }
+
+                            </td>
+                            <td>
+                                <span class="">@item.DangKyDichVu.GhiChu</span>
+                            </td>
+                            <td>
+                                <a class="btn btn-sm btn-outline-secondary" title="Thanh toán dịch vụ" href="@Url.Action("ThanhToanDichVu", "DichVu", new { Id = item.Id})">Thanh Toán</a>
+                                <a class="btn btn-sm btn-outline-danger" title="Xóa" onclick="DeleteAcc('@item.Id')"><i class="fa fa-trash-o"></i></a>
+                            </td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+
+
+        <h2 class="text-center text-danger">Thông tin chi tiết dịch vụ</h2>
+
+
+        <div class="col-lg-12" id="themdichvu">
+            @using (Html.BeginForm("SuaDichVu", "DichVu", FormMethod.Post, new { role = "form", @enctype = "multipart/form-data" }))
+            {
+                <input type="hidden" value="@Model.Id" name="Id" />
+                <div class="card">
+                    <div class="header">
+                        <div class="form-group w-50">
+                            <input type="text" class="form-control" value="@Model.TenDichVu" name="TenDichVu" placeholder="Tên dịch vụ">
+                        </div>
+                        <div class="form-group w-25">
+                            <input type="number" class="form-control" value="@Model.Gia" name="Gia" placeholder="Giá dịch vụ">
+                        </div>
+                        <div class="form-group">
+                            <input type="file" class="form-control-file" name="file" id="file" accept="image/*">
+                            <small id="fileHelp" class="form-text text-muted">Chọn ảnh minh họa cho dịch vụ</small>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="float-left">Chọn loại dịch vụ</label>
+                            <select class="form-control" name="MaLoaiDV" required>
+                                @foreach (var item in db.LoaiDVs.ToList())
+                                {
+
+                                    if (item.Id == Model.MaLoaiDV)
+                                    {
+                                        <option selected value="@item.Id">@item.TenLoaiDV</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@item.Id">@item.TenLoaiDV</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="body">
+
+                        <div>
+                            <label for="Des">Mô tả dịch vụ</label>
+                            <textarea name="MoTa" id="editor">@Html.Raw(Model.MoTa)</textarea>
+                            <input type="submit" value="Sửa dịch vụ" class="m-2 btn btn-danger" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+
+    </div>
+
+</div>
+
+<script>
+    CKEDITOR.replace('editor', { customConfig: "/Content/ckeditor/config.js" });
+</script>

@@ -1,0 +1,239 @@
+﻿@using SchoolManager.Models;
+@using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = "Thông tin điểm danh học sinh";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    TruongMamNonEntities db = new TruongMamNonEntities();
+    string getid = User.Identity.GetUserId();
+    AspNetUser me = db.AspNetUsers.Find(getid);
+}
+<script src="~/Content/LucidHR/light/assets/bundles/libscripts.bundle.js"></script>
+<script src="~/Content/LucidHR/light/assets/bundles/vendorscripts.bundle.js"></script>
+<script src="~/Content/LucidHR/light/assets/bundles/mainscripts.bundle.js"></script>
+
+<link rel="stylesheet" href="~/Content/LucidHR/light/assets/css/main.css">
+<link rel="stylesheet" href="~/Content/LucidHR/light/assets/css/color_skins.css">
+@*<link rel="stylesheet" href="~/Content/LucidHR/assets/vendor/bootstrap/css/bootstrap.min.css">*@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="../Date-Time-Picker-Bootstrap-4/build/css/bootstrap-datetimepicker.min.css">
+<script src="../Date-Time-Picker-Bootstrap-4/build/js/bootstrap-datetimepicker.min.js"></script>
+
+<section class="page-title" style="background-image:url(images/background/5.jpg);">
+    <div class="auto-container">
+        <div class="inner-box">
+            <h1>Thông tin điểm danh học sinh</h1>
+            <ul class="bread-crumb">
+                <li><a href="#">Trang chủ</a></li>
+                <li>Điểm danh học sinh</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<style>
+    body {
+        background-color: #ffffff;
+    }
+</style>
+<div class="container-fluid">
+
+    <div class="row clearfix">
+        <ul class="nav nav-tabs">
+            <li class="nav-item active"><a class="nav-link" data-toggle="tab" href="#themdiemdanh">Xem theo ngày</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#xemtheothang">Xem theo tháng</a></li>
+        </ul>
+        <div class="tab-content col-lg-12">
+            <div class="card tab-pane" id="xemtheothang">
+                <div class="header row">
+                    <h2 class="col-md-3">Xem danh sách điểm danh học sinh</h2>
+                    <div class="col-md-2">
+                        <select title="Lớp học đang phụ trách" class="form-control" name="lop" id="lophoccanxem">
+                            @if (User.IsInRole("Giáo viên"))
+                            {
+                                <option selected value="">Lựa chọn lớp học</option>
+                                if (me != null)
+                                {
+                                    foreach (var item in me.GiaoVien.GiaoVien_Lops.Where(x => x.TrangThai == "Đang phụ trách").ToList())
+                                    {
+                                        <option value="@item.Lop1.Id">@item.Lop1.Lop1</option>
+                                    }
+                                }
+                            }
+                            @if (User.IsInRole("Phụ huynh"))
+                            {
+                                <option selected value="">Lựa chọn lớp học</option>
+                                if (me != null)
+                                {
+                                    List<Lop> dslop = new List<Lop>();
+                                    foreach (var item in me.PhuHuynh.PhuHuynh_HocSinh.ToList())
+                                    {
+                                        if (!dslop.Contains(item.HocSinh.Lop))
+                                        {
+                                            dslop.Add(item.HocSinh.Lop);
+                                        }
+
+                                    }
+                                    foreach (var item in dslop)
+                                    {
+                                        <option value="@item.Id">@item.Lop1</option>
+                                    }
+                                }
+                            }
+                            @if (User.IsInRole("Quản trị viên"))
+                            {
+                                <option selected value="">Lựa chọn lớp học</option>
+                                if (me != null)
+                                {
+                                    foreach (var item in db.Lops)
+                                    {
+                                        <option value="@item.Id">@item.Lop1</option>
+                                    }
+                                }
+                            }
+
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" placeholder="chọn tháng trong năm" class="form-control" name="thoigian" id="datepicker">
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-sm btn-outline-danger" title="Xem" href="javascript:void(0);" onclick="Xem()"><i class="icon icon-eye"></i> Xem thông tin</button>
+                    </div>
+                </div>
+                <div class="body" id="loadsdiemdanh">
+
+                </div>
+            </div>
+            <div class="card tab-pane active" id="themdiemdanh">
+                <div class="header row">
+                    <h2 class="col-md-6">Dánh sách học sinh đã được điểm danh theo ngày</h2>
+                    <div class="col-md-2">
+                        <select title="Lớp học đang phụ trách" class="form-control" name="lop" id="lophoccanxem2">
+                            @if (User.IsInRole("Giáo viên"))
+                            {
+                                <option selected value="">Lựa chọn lớp học</option>
+                                if (me != null)
+                                {
+                                    foreach (var item in me.GiaoVien.GiaoVien_Lops.Where(x => x.TrangThai == "Đang phụ trách").ToList())
+                                    {
+                                        <option value="@item.Lop1.Id">@item.Lop1.Lop1</option>
+                                    }
+                                }
+                            }
+                            @if (User.IsInRole("Phụ huynh"))
+                            {
+                                <option selected value="">Lựa chọn lớp học</option>
+                                if (me != null)
+                                {
+                                    List<Lop> dslop = new List<Lop>();
+                                    foreach (var item in me.PhuHuynh.PhuHuynh_HocSinh.ToList())
+                                    {
+                                        if (!dslop.Contains(item.HocSinh.Lop))
+                                        {
+                                            dslop.Add(item.HocSinh.Lop);
+                                        }
+
+                                    }
+                                    foreach (var item in dslop)
+                                    {
+                                        <option value="@item.Id">@item.Lop1</option>
+                                    }
+                                }
+                            }
+                            @if (User.IsInRole("Quản trị viên"))
+                            {
+                                <option selected value="">Lựa chọn lớp học</option>
+                                if (me != null)
+                                {
+                                    foreach (var item in db.Lops)
+                                    {
+                                        <option value="@item.Id">@item.Lop1</option>
+                                    }
+                                }
+                            }
+
+                        </select>
+                    </div>
+
+                    <div class="col-md-2">
+                        <input type="text" placeholder="chọn ngày" class="form-control" name="thoigian" id="thoigianngay">
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-sm btn-outline-danger" title="Xem" href="javascript:void(0);" onclick="Xemngay()"><i class="icon icon-eye"></i> Xem thông tin</button>
+                    </div>
+                </div>
+                <div class="body" id="dsdiemdanhhocsinh_ngay">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+        var data = { Lop: $('#lophoccanxem2').val() ,thoigian:'@DateTime.Now.ToString("MM/dd/yyyy")'};
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("GetDiemDanhHocSinh_Ngay", "GiaoVien" )",
+            data: data,
+            content: 'application/json; charset=utf-8',
+            success: function (result) {
+                $("#dsdiemdanhhocsinh_ngay").empty();
+                $("#dsdiemdanhhocsinh_ngay").append(result);
+                $('.capnhat').hide();
+            }
+        });
+
+    function Xem() {
+        var initial = $('#datepicker').val().split(/\//);
+        //console.log([initial[1], initial[0], initial[2]].join('/')); //=> 'mm/dd/yyyy'
+        var t = [initial[1], initial[0], initial[2]].join('/');
+        var data = { Lop: $('#lophoccanxem').val(), thoigian: $('#datepicker').val()};
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("API_GetDiemDanhHocSinh_Lop", "GiaoVien" )",
+            data: data,
+            content: 'application/json; charset=utf-8',
+            success: function (result) {
+                $("#loadsdiemdanh").empty();
+                $("#loadsdiemdanh").append(result);
+            }
+            });
+    }
+
+    function Xemngay() {
+        var initial = $('#thoigianngay').val().split(/\//);
+        //console.log([initial[1], initial[0], initial[2]].join('/')); //=> 'mm/dd/yyyy'
+        var t = [initial[1], initial[0], initial[2]].join('/');
+        var data = { Lop: $('#lophoccanxem2').val(), thoigian: $('#thoigianngay').val()};
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("GetDiemDanhHocSinh_Ngay", "GiaoVien" )",
+            data: data,
+            content: 'application/json; charset=utf-8',
+            success: function (result) {
+                $("#dsdiemdanhhocsinh_ngay").empty();
+                $("#dsdiemdanhhocsinh_ngay").append(result);
+                $('.capnhat').hide();
+            }
+        });
+
+    }
+    //$(function () {
+    $('#thoigian').datetimepicker();
+
+
+
+    $('#thoigianngay').datetimepicker({
+        format: 'L'
+    });
+</script>
+<script>
+    $('#datepicker').datetimepicker({
+        format: "MM/YYYY",
+        viewMode: "months"
+    });
+
+</script>

@@ -1,0 +1,67 @@
+﻿@using SchoolManager.Models;
+@model List<SchoolManager.Models.DiemDanhHocSinh>
+
+@{
+    TruongMamNonEntities db = new TruongMamNonEntities();
+    Layout = null;
+}
+@if (Model.Count() > 0)
+{
+    <div class="table-responsive">
+        <table class="table table-hover js-basic-example dataTable table-custom table-striped m-b-0 c_list">
+            <thead class="">
+                <tr>
+                    <th>Hình ảnh</th>
+                    <th>Họ và tên</th>
+                    <th>Lớp</th>
+                    <th>Người đưa đón</th>
+                    <th>Thời gian</th>
+                    <th>Trạng thái</th>
+                    <th class="capnhat">Cập nhật</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    HocSinh gv = db.HocSinhs.Where(x => x.Id == item.Id_HocSinh).FirstOrDefault();
+                    <tr id="row_@item.Id">
+                        <td>
+                            <img src="~/Content/UserUpload/img/DiemDanhHocSinh/@String.Format(item.Id + ".png")" class="avatar" alt="">
+                        </td>
+                        <td>
+                            <a href="@Url.Action("ChitietHocSinh", "VanPhong", new { id = gv.Id})"><h5 class="mb-0" id="name_@item.Id">@gv.HoTen</h5></a>
+
+                        </td>
+                        <td id="Lop_@item.Id">@(gv.Lop.Lop1 ?? "Chưa có")</td>
+                        <td id="duadon_@item.Id">@(item.NguoiDuaDon ?? "Chưa có")</td>
+                        <td id="thoigian_@item.Id">
+                            @item.ThoiGian.ToString("MM/dd/yyyy hh:mm tt")
+                        </td>
+
+                        <td id="dive_@item.Id">
+
+                            @if (item.DenVe == "Đưa đi")
+                            {
+                                <span class="badge text-success" style="background-color:lightcyan">Đưa đi</span>
+                            }
+                            @if (item.DenVe == "Đón về")
+                            {
+                                <span class="badge text-primary" style="background-color:lightcyan">Đón về</span>
+                            }
+                        </td>
+
+                        <td class="capnhat">
+                            <a class="btn btn-sm btn-outline-secondary" title="Sửa" href="javascript:void(0);" onclick="Sua(@item.Id)"><i class="fa fa-edit"></i></a>
+                            <a class="btn btn-sm btn-outline-danger" title="Xóa" href="javascript:void(0);" onclick="Xoa(@item.Id)" data-type="confirm"><i class="fa fa-trash-o"></i></a>
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <span>chưa có dữ liệu</span>
+}

@@ -1,0 +1,140 @@
+﻿@using SchoolManager.Models;
+
+@{
+    ViewBag.Title = "Phụ huynh";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    TruongMamNonEntities db = new TruongMamNonEntities();
+}
+
+
+<div class="block-header">
+    <div class="row">
+        <div class="col-lg-6 col-md-8 col-sm-12">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#"><i class="icon-home"></i></a></li>
+                <li class="breadcrumb-item">Quản trị</li>
+                <li class="breadcrumb-item active">Phụ huynh</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row clearfix">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="header">
+                <h2>Danh sách Phụ huynh</h2>
+                @*<ul class="header-dropdown">
+                    <li><a href="javascript:void(0);" class="btn btn-info" data-toggle="modal" data-target="#addcontact">Thêm Phụ huynh</a></li>
+                </ul>*@
+            </div>
+            <div class="body">
+                <div class="table-responsive">
+                    <table class="table table-hover js-basic-example dataTable table-custom table-striped m-b-0 c_list">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th></th>
+                                <th>Họ và tên</th>
+                                <th>Điện thoại</th>
+                                <th>Nơi công tác</th>
+                                <th>Năm sinh</th>
+                                <th>Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in db.PhuHuynhs.ToList())
+                            {
+                                <tr>
+                                    <td class="width45">
+                                        <img src="../../UserUpload/img/account/@item.AspNetUser.img" class="rounded-circle avatar" alt="">
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("ChitietPhuHuynh", "VanPhong", new { id = item.Id})"><h6 class="mb-0">@item.HoTen</h6></a>
+
+                                    </td>
+                                    <td>@(item.SDT ?? "Chưa có")</td>
+                                    <td>@(item.NoiCongTac ?? "Chưa có")</td>
+
+                                    <td>
+                                        @(item.NamSinh ?? "Chưa có")
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-sm btn-outline-secondary" title="Sửa" href="@Url.Action("Edit", "UsersAdmin", new { id = item.Id})"><i class="fa fa-edit"></i></a>
+                                        <a class="btn btn-sm btn-outline-danger js-sweetalert" title="Xóa" href="@Url.Action("Delete", "UsersAdmin", new { id = item.Id})" data-type="confirm"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal animated zoomIn" id="addcontact" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        @using (Html.BeginForm("AddHocSinh", "VanPhong", FormMethod.Post, new { role = "form", @enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="title" id="defaultModalLabel">Add Contact</h6>
+                </div>
+                <div class="modal-body">
+                    <div class="row clearfix">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="HoTen" placeholder="Họ và tên">
+                                <small class="form-text text-muted">Các thông tin bổ sung khác sẽ được bổ sung tùy loại tài khoản</small>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="BiDanh" placeholder="Bí danh">
+                                <small class="form-text text-danger">Mật khẩu mặc định sẽ là 333333</small>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="DanToc" placeholder="Dân tộc">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="file" class="form-control-file" name="file" id="file" accept="image/*">
+                                <small id="fileHelp" class="form-text text-muted">Chọn ảnh đại diện cho tài khoản, bạn có thể không cần chọn</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="fancy-radio custom-color-green">
+                                    <input name="GioiTinh" value="Nam" type="radio"><span><i></i>Nam</span>
+                                </label>
+                                <label class="fancy-radio custom-color-green">
+                                    <input name="GioiTinh" value="Nữ" type="radio" checked=""><span><i></i>Nữ</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="icon-calendar"></i></span>
+                                </div>
+                                <input type="date" class="form-control date" name="NgaySinh" placeholder="Ngày sinh, ví dụ: 30/07/2016">
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Thêm Phụ huynh</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+

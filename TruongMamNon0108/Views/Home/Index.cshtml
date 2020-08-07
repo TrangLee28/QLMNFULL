@@ -1,0 +1,423 @@
+﻿
+@using SchoolManager.Models;
+@{
+    ViewBag.Title = "Thực đơn";
+    TruongMamNonEntities db = new TruongMamNonEntities();
+}
+<section class="main-slider" data-start-height="800" data-slide-overlay="yes">
+
+    <div class="tp-banner-container">
+        <div class="tp-banner">
+            <ul>
+
+                <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-thumb="images/main-slider/image-1.jpg" data-saveperformance="off" data-title="Awesome Title Here">
+                    <img src="images/main-slider/image-1.jpg" alt="" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+                    <div class="overlay-slide"></div>
+
+                    <div class="tp-caption sft sfb tp-resizeme"
+                         data-x="center" data-hoffset="0"
+                         data-y="center" data-voffset="-180"
+                         data-speed="1500"
+                         data-start="0"
+                         data-easing="easeOutExpo"
+                         data-splitin="none"
+                         data-splitout="none"
+                         data-elementdelay="0.01"
+                         data-endelementdelay="0.3"
+                         data-endspeed="1200"
+                         data-endeasing="Power4.easeIn"><figure class="content-image"><img src="images/main-slider/content-image-1.png" alt=""></figure> </div>
+
+                    <div class="tp-caption sft sfb tp-resizeme"
+                         data-x="center" data-hoffset="0"
+                         data-y="center" data-voffset="-70"
+                         data-speed="1500"
+                         data-start="500"
+                         data-easing="easeOutExpo"
+                         data-splitin="none"
+                         data-splitout="none"
+                         data-elementdelay="0.01"
+                         data-endelementdelay="0.3"
+                         data-endspeed="1200"
+                         data-endeasing="Power4.easeIn"><div class="styled-text">Chào mừng đến với trường mầm non ...</div></div>
+
+                    <div class="tp-caption sfb sfb tp-resizeme"
+                         data-x="center" data-hoffset="0"
+                         data-y="center" data-voffset="25"
+                         data-speed="1500"
+                         data-start="1000"
+                         data-easing="easeOutExpo"
+                         data-splitin="none"
+                         data-splitout="none"
+                         data-elementdelay="0.01"
+                         data-endelementdelay="0.3"
+                         data-endspeed="1200"
+                         data-endeasing="Power4.easeIn"><div class="border-heading">Câu slogan gì đó ....</div></div>
+
+                    <div class="tp-caption sfb sfb tp-resizeme"
+                         data-x="center" data-hoffset="0"
+                         data-y="center" data-voffset="115"
+                         data-speed="1500"
+                         data-start="1500"
+                         data-easing="easeOutExpo"
+                         data-splitin="none"
+                         data-splitout="none"
+                         data-elementdelay="0.01"
+                         data-endelementdelay="0.3"
+                         data-endspeed="1200"
+                         data-endeasing="Power4.easeIn"><div class="text">Mô tả gì đó vào đây!</div></div>
+
+
+                </li>
+
+                <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-thumb="images/main-slider/image-2.jpg" data-saveperformance="off" data-title="Awesome Title Here">
+                    <img src="images/main-slider/image-2.jpg" alt="" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                         data-x="left" data-hoffset="450"
+                         data-y="center" data-voffset="-140"
+                         data-speed="1500"
+                         data-start="500"
+                         data-easing="easeOutExpo"
+                         data-splitin="none"
+                         data-splitout="none"
+                         data-elementdelay="0.01"
+                         data-endelementdelay="0.3"
+                         data-endspeed="1200"
+                         data-endeasing="Power4.easeIn"><h4>welcome to our driving school</h4></div>
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                         data-x="left" data-hoffset="450"
+                         data-y="center" data-voffset="-40"
+                         data-speed="1500"
+                         data-start="1000"
+                         data-easing="easeOutExpo"
+                         data-splitin="none"
+                         data-splitout="none"
+                         data-elementdelay="0.01"
+                         data-endelementdelay="0.3"
+                         data-endspeed="1200"
+                         data-endeasing="Power4.easeIn"><h2>Play and Learn How to Explore <br> New things</h2></div>
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                         data-x="left" data-hoffset="450"
+                         data-y="center" data-voffset="70"
+                         data-speed="1500"
+                         data-start="1500"
+                         data-easing="easeOutExpo"
+                         data-splitin="none"
+                         data-splitout="none"
+                         data-elementdelay="0.01"
+                         data-endelementdelay="0.3"
+                         data-endspeed="1200"
+                         data-endeasing="Power4.easeIn"><div class="dark-text">Programs of Kids Tree Preschool include world-class curriculum and knowledgeable child development <br> that meet the needs child development that meet the needsof children.</div></div>
+
+                   
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+
+</section>
+<!--End Main Slider-->
+<!--Featured Section-->
+<section class="featured-section style-two">
+    <div class="auto-container">
+        <!--Sec Title-->
+        <div class="sec-title centered">
+            <div class="title-icon"><img src="images/icons/sec-title-icon-1.png" alt="" /></div>
+            <h2>Welcome To KinderGarten</h2>
+            <div class="title">About Our Paly school</div>
+            <div class="text">We're a childcare centre with an engaging curriculum backed by qualified, experienced and experienced.</div>
+        </div>
+        <!--End Sec Title-->
+        <div class="row clearfix">
+            <!--Column/ Pull Left-->
+            <div class="column pull-left col-md-4 col-sm-6 col-xs-12">
+                <!--Feature Block-->
+                <div class="feature-block">
+                    <div class="inner-box">
+                        <div class="icon-box">
+                            <span class="icon flaticon-book"></span>
+                        </div>
+                        <h3><a href="features.html">Funny and Happy</a></h3>
+                        <div class="text">We are group of teachers who really love childrens and enjoy every mo-</div>
+                    </div>
+                </div>
+
+                <!--Feature Block-->
+                <div class="feature-block">
+                    <div class="inner-box">
+                        <div class="icon-box">
+                            <span class="icon flaticon-football"></span>
+                        </div>
+                        <h3><a href="features.html">Fulfill With Love</a></h3>
+                        <div class="text">We are group of teachers who really love childrens and enjoy every mo-</div>
+                    </div>
+                </div>
+
+            </div>
+            <!--Column / Pull Right-->
+            <div class="column pull-right col-md-4 col-sm-6 col-xs-12">
+                <!--Feature Block Two-->
+                <div class="feature-block-two">
+                    <div class="inner-box">
+                        <div class="icon-box">
+                            <span class="icon flaticon-paint-palette-and-brush"></span>
+                        </div>
+                        <h3><a href="features.html">Professional Teaching</a></h3>
+                        <div class="text">We are group of teachers who really love childrens and enjoy every mo-</div>
+                    </div>
+                </div>
+
+                <!--Feature Block Two-->
+                <div class="feature-block-two">
+                    <div class="inner-box">
+                        <div class="icon-box">
+                            <span class="icon flaticon-graduation-cap"></span>
+                        </div>
+                        <h3><a href="features.html">Fully Equiped</a></h3>
+                        <div class="text">We are group of teachers who really love childrens and enjoy every mo-</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="image-column col-md-4 col-sm-12 col-xs-12">
+                <figure class="image wow fadeInUp">
+                    <img src="images/resource/welcome-2.png" alt="" />
+                </figure>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<!--End Featured Section-->
+<!--Join Section-->
+<section class="join-section" style="background-image:url(images/background/pattern-1.png);">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <!--Column-->
+            <div class="column col-md-9 col-sm-12 col-xs-12">
+                <div class="row clearfix">
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                        <h2>Get Involved!</h2>
+                    </div>
+                    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                        <div class="text">Nothing is more important than your child’s well-being. Join our semnars and training and learn how to keep it.</div>
+                    </div>
+                </div>
+            </div>
+            <!--Column-->
+            <div class="btn-column col-md-3 col-sm-12 col-xs-12">
+                <a href="contact.html" class="theme-btn btn-style-one">Join Now</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!--End Join Section-->
+<!--Classes News-->
+<section class="classes-news-section">
+    <div class="auto-container">
+        <!--Sec Title-->
+        <div class="sec-title centered">
+            <div class="title-icon"><img src="images/icons/sec-title-icon-1.png" alt="" /></div>
+            <h2>Dịch vụ của chúng tôi</h2>
+            <div class="title">Mô tả gì đó</div>
+            <div class="text">Thêm gì đó...</div>
+        </div>
+        <div class="row clearfix">
+
+            @foreach (var item in db.DichVus.Where(x => x.TrangThai).Take(3).ToList())
+            {
+                <div class="news-style-two col-md-4">
+                    <div class="inner-box">
+                        <!--Image Column-->
+                        <div class="image-column">
+                            <div class="image">
+                                <a href="@Url.Action("ChiTietDichVu","Home", new { Id = item.Id})"><img src="/Content/UserUpload/img/dichvu/@String.Format(item.Id.ToString()+".png")" alt="" /></a>
+                                <span class="category">@item.LoaiDV.TenLoaiDV</span>
+                                <div class="overlay-layer">
+                                    <a href="@Url.Action("ChiTietDichVu","Home", new { Id = item.Id})"><span class="icon flaticon-unlink"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Content Column-->
+                        <div class="content-column">
+                            <div class="inner">
+                                @*<div class="post-date">Feb 29, 2017</div>*@
+                                <h3><a href="@Url.Action("ChiTietDichVu","Home", new { Id = item.Id})">@item.TenDichVu</a></h3>
+                                <div class="text">Giá dịch vụ: @item.Gia</div>
+                                <a href="@Url.Action("DangKyDichVu","Home", new { Id = item.Id})" class="theme-btn btn-style-one">Đăng ký ngay</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</section>
+<!--End Classes News-->
+<!--Call To Action-->
+<section class="call-to-action" style="background-image:url(images/background/2.jpg);">
+    <div class="auto-container">
+        <div class="row clearfix">
+
+            <!--Content Column-->
+            <div class="content-column pull-right col-md-8 col-sm-12 col-xs-12">
+                <h3><span>Get Enroll, </span>How to Enroll Your Child <br> to a Class?</h3>
+                <div class="text">We are group of teachers who really love childrens and eaching and playing with our students.enjoy every and playing with our students.</div>
+                <a href="contact.html" class="theme-btn btn-style-one">Contact Now</a>
+            </div>
+            <!--Image Column-->
+            <div class="image-column pull-left col-md-4 col-sm-12 col-xs-12">
+                <figure class="image wow fadeInUp">
+                    <img src="images/resource/baby.png" alt="" />
+                </figure>
+            </div>
+
+        </div>
+
+      
+    </div>
+</section>
+<!--End Call To Action-->
+<!--Teachers Section-->
+<section class="teachers-section no-padding-btm">
+    <div class="auto-container">
+        <!--Sec Title-->
+        <div class="sec-title centered">
+            <div class="title-icon"><img src="images/icons/sec-title-icon-1.png" alt="" /></div>
+            <h2>Giáo viên của chúng tôi</h2>
+            <div class="title">Đội ngũ tuyệt vời . ..</div>
+            <div class="text">Với niềm yêu mến trẻ nhỏ vô bờ bến . .. . :))</div>
+        </div>
+
+        <div class="three-item-carousel owl-carousel owl-theme">
+            @foreach (var item in db.GiaoViens.Take(6).ToList())
+            {
+                <div class="teacher-block">
+                    <div class="inner-box">
+                        <div class="image-box">
+                            <img src="/Content/UserUpload/img/account/@item.img" alt="" />
+                        </div>
+                        <h3>@item.HoTen</h3>
+                        <div class="designation">@item.ChuyenNganh</div>
+                    </div>
+                </div>
+            }
+            <!--Teacher Block-->
+
+
+        </div>
+    </div>
+    <!--Background Patten-->
+    <div class="background-patten"></div>
+</section>
+<!--End Teachers Section-->
+<!--Gallery Section-->
+<section class="gallery-section">
+    <div class="auto-container">
+        <!--Sec Title-->
+        <div class="sec-title centered">
+            <div class="title-icon"><img src="images/icons/sec-title-icon-1.png" alt="" /></div>
+            <h2>Hình ảnh các hoạt động</h2>
+            <div class="title">Ghi lại khoảng khắc của các con</div>
+            <div class="text">Chúng tôi luôn dõi theo và đồng hành cùng sự phát triển của trẻ nhỏ</div>
+        </div>
+
+        <div class="row clearfix">
+
+            <!--Gallery Item-->
+            <div class="gallery-item col-md-4 col-sm-6 col-xs-12">
+                <div class="inner-box">
+                    <div class="image-box">
+                        <img src="images/gallery/1.jpg" alt="">
+                        <div class="overlay-box">
+                            <div class="content">
+                                <a class="lightbox-image" href="images/gallery/1.jpg" title="Image Title Here" data-fancybox-group="example-gallery"><span class="icon flaticon-plus"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Gallery Item-->
+            <div class="gallery-item col-md-4 col-sm-6 col-xs-12">
+                <div class="inner-box">
+                    <div class="image-box">
+                        <img src="images/gallery/2.jpg" alt="">
+                        <div class="overlay-box">
+                            <div class="content">
+                                <a class="lightbox-image" href="images/gallery/2.jpg" title="Image Title Here" data-fancybox-group="example-gallery"><span class="icon flaticon-plus"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Gallery Item-->
+            <div class="gallery-item col-md-4 col-sm-6 col-xs-12">
+                <div class="inner-box">
+                    <div class="image-box">
+                        <img src="images/gallery/3.jpg" alt="">
+                        <div class="overlay-box">
+                            <div class="content">
+                                <a class="lightbox-image" href="images/gallery/3.jpg" title="Image Title Here" data-fancybox-group="example-gallery"><span class="icon flaticon-plus"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Gallery Item-->
+            <div class="gallery-item col-md-4 col-sm-6 col-xs-12">
+                <div class="inner-box">
+                    <div class="image-box">
+                        <img src="images/gallery/4.jpg" alt="">
+                        <div class="overlay-box">
+                            <div class="content">
+                                <a class="lightbox-image" href="images/gallery/4.jpg" title="Image Title Here" data-fancybox-group="example-gallery"><span class="icon flaticon-plus"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Gallery Item-->
+            <div class="gallery-item col-md-4 col-sm-6 col-xs-12">
+                <div class="inner-box">
+                    <div class="image-box">
+                        <img src="images/gallery/5.jpg" alt="">
+                        <div class="overlay-box">
+                            <div class="content">
+                                <a class="lightbox-image" href="images/gallery/5.jpg" title="Image Title Here" data-fancybox-group="example-gallery"><span class="icon flaticon-plus"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Gallery Item-->
+            <div class="gallery-item col-md-4 col-sm-6 col-xs-12">
+                <div class="inner-box">
+                    <div class="image-box">
+                        <img src="images/gallery/6.jpg" alt="">
+                        <div class="overlay-box">
+                            <div class="content">
+                                <a class="lightbox-image" href="images/gallery/6.jpg" title="Image Title Here" data-fancybox-group="example-gallery"><span class="icon flaticon-plus"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</section>

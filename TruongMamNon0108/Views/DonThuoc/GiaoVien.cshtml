@@ -1,0 +1,122 @@
+﻿
+@using SchoolManager.Models;
+@using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = "Đơn thuốc";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    TruongMamNonEntities db = new TruongMamNonEntities();
+    List<HocSinh> dshs = db.HocSinhs.ToList();
+    if (User.IsInRole("Giáo viên"))
+    {
+        string getid = User.Identity.GetUserId();
+        GiaoVien giaoVien = db.GiaoViens.Find(getid);
+        List<int> dslop = new List<int>();
+        if (giaoVien != null)
+        {
+            foreach (var item in giaoVien.GiaoVien_Lops.Where(x => x.TrangThai == "Đang phụ trách").ToList())
+            {
+                dslop.Add(item.Lop);
+            }
+        }
+        dshs = dshs.Where(x => dslop.Contains(x.LopHoc)).ToList();
+    }
+    List<int> dsidhs = dshs.Select(x=>x.Id).ToList();
+}
+
+<script src="~/Content/ckeditor/ckeditor.js"></script>
+<script src="~/Content/ckfinder/ckfinder.js"></script>
+<div class="block-header">
+    <div class="row">
+        <div class="col-lg-6 col-md-8 col-sm-12">
+            <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a> Dánh sách Đơn thuốc</h2>
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Admin")"><i class="icon-home"></i></a></li>
+                <li class="breadcrumb-item">Quản trị</li>
+                <li class="breadcrumb-item active">Đơn thuốc</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row clearfix">
+    <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#themdiemdanh">Danh sách</a></li>
+
+    </ul>
+    <div class="tab-content col-lg-12">
+
+        <div class="col-lg-12 tab-pane active" id="themdiemdanh">
+            <div class="card">
+                <div class="header">
+                    <h2>Dánh sách Đơn thuốc</h2>
+                </div>
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-hover js-basic-example dataTable table-custom table-striped m-b-0 c_list">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Học sinh</th>
+                                    <th>Lớp</th>
+                                    <th>Tên</th>
+                                    <th>Hàm lượng</th>
+                                    <th>Số lượng</th>
+                                    <th>Đơn vị</th>
+                                    <th>Cách dùng</th>
+                                    <th>Trạng thái</th>
+                                    @*<th>Hành động</th>*@
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in db.DonThuocs.Where(x => dsidhs.Contains(x.Id_HS) ).ToList())
+                                {
+                                <tr id="rowAcc_@item.Id">
+                                    <td>
+                                        <span>@item.HocSinh.HoTen</span>
+                                    </td>
+                                    <td>
+                                        <span>@item.HocSinh.Lop.Lop1</span>
+                                    </td>
+                                    <td>
+                                        <h6 class="mb-0">@item.Ten</h6>
+                                    </td>
+                                    <td>
+                                        <span class="text-info">@item.HamLuong</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-danger">@item.SoLuong</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-dark">@item.DonVi</span>
+                                    </td>
+                                    <td>
+                                        <span>@item.CachDung</span>
+                                    </td>
+
+                                    @if (!item.TrangThai)
+                                    {
+                                <td>
+                                    <span class="bage text-danger">Duy trì</span>
+
+                                </td>
+                                    }
+                                    else
+                                    {
+
+                                <td>
+                                    <span class="bage text-info">Duy trì</span>
+
+                                </td>
+                                    }
+                                </tr>
+
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

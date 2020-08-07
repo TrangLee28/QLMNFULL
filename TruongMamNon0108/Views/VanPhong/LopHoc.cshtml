@@ -1,0 +1,237 @@
+﻿@using SchoolManager.Models;
+@using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = "Lớp học";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    TruongMamNonEntities db = new TruongMamNonEntities();
+    List<Lop> dslop = db.Lops.ToList();
+
+    if (User.IsInRole("Giáo viên"))
+    {
+        string getid = User.Identity.GetUserId();
+        GiaoVien giaoVien = db.GiaoViens.Find(getid);
+        List<int> iddslop = new List<int>();
+        if (giaoVien != null)
+        {
+            foreach (var item in giaoVien.GiaoVien_Lops.Where(x => x.TrangThai == "Đang phụ trách").ToList())
+            {
+                iddslop.Add(item.Lop);
+            }
+        }
+        dslop = dslop.Where(x => iddslop.Contains(x.Id)).ToList();
+    }
+}
+
+
+
+<div class="block-header">
+    <div class="row">
+        <div class="col-lg-6 col-md-8 col-sm-12">
+            <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a> Dánh sách lớp học</h2>
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#"><i class="icon-home"></i></a></li>
+                <li class="breadcrumb-item">Quản trị</li>
+                <li class="breadcrumb-item active">Lớp Học</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row clearfix">
+    <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#themdiemdanh">Danh sách</a></li>
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#dsdk">Nhóm tuổi</a></li>
+    </ul>
+    <div class="tab-content col-lg-12">
+        <div class="card col-lg-12 tab-pane active" id="themdiemdanh">
+            <div class="header">
+                <h2>Dánh sách lớp học</h2>
+                <ul class="header-dropdown">
+                    <li><a href="javascript:void(0);" class="btn btn-info" data-toggle="modal" data-target="#addcontact">Thêm lớp học</a></li>
+                </ul>
+            </div>
+            <div class="body">
+                <div class="table-responsive">
+                    <table class="table table-hover js-basic-example dataTable table-custom table-striped m-b-0 c_list">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Tên lớp</th>
+                                <th>Số HS</th>
+                                <th>Nhóm</th>
+                                <th>Giáo viên CN</th>
+                                <th>Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in dslop)
+                            {
+                                <tr>
+                                    <td>
+                                        <a href="@Url.Action("ChitietLopHoc", "VanPhong", new { id = item.Id})"><h6 class="mb-0">@item.Lop1</h6></a>
+
+                                    </td>
+                                    <td>@item.HocSinhs.Count()</td>
+                                    <td>@(item.NhomTuoi.TenNhom ?? "chưa có")</td>
+                                    @if (item.GiaoVien_Lops.Where(x => x.TrangThai == "Đang phụ trách").Count() > 0)
+                                    {
+                                        <td>@item.GiaoVien_Lops.Where(x => x.TrangThai == "Đang phụ trách").FirstOrDefault().GiaoVien.HoTen</td>
+                                    }
+                                    else
+                                    {
+                                        <td>Chưa có</td>
+                                    }
+
+
+                                    <td>
+                                        <a class="btn btn-sm btn-primary" title="Xem chi tiết" href="@Url.Action("ChitietLopHoc", "VanPhong", new { Id = item.Id})"><i class="fa fa-eye"></i></a>
+                                        <a class="btn btn-sm btn-outline-danger" title="Xóa" onclick="DeleteHs('@item.Id')"><i class="fa fa-trash-o"></i></a>
+
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="card col-lg-12 tab-pane" id="dsdk">
+            <div class="header">
+                <h2>Dánh sách nhóm tuổi</h2>
+                <ul class="header-dropdown">
+                    <li><a href="javascript:void(0);" class="btn btn-info" data-toggle="modal" data-target="#themnhom">Thêm nhóm tuổi</a></li>
+                </ul>
+            </div>
+            <div class="body">
+                <div class="table-responsive">
+                    <table class="table table-hover js-basic-example dataTable table-custom table-striped m-b-0 c_list">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Tên nhóm tuổi</th>
+                                <th>Số lớp</th>
+                                <th>Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in db.NhomTuois.ToList())
+                            {
+                                <tr>
+                                    <td>@item.TenNhom</td>
+                                    <td>@item.Lops.Count()</td>
+
+
+
+                                    <td>
+                                        <a class="btn btn-sm btn-primary" title="Xem chi tiết" href="@Url.Action("ChitietLopHoc", "VanPhong", new { Id = item.Id})"><i class="fa fa-eye"></i></a>
+                                        <a class="btn btn-sm btn-outline-danger" title="Xóa" onclick="DeleteHs('@item.Id')"><i class="fa fa-trash-o"></i></a>
+
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal animated zoomIn" id="addcontact" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        @using (Html.BeginForm("LopHoc", "VanPhong", FormMethod.Post, new { role = "form", @enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="title" id="defaultModalLabel">Thêm lớp học</h6>
+                </div>
+                <div class="modal-body">
+                    <div class="row clearfix">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="lop" placeholder="Nhập tên lớp">
+                            </div>
+                            <div class="form-group clearfix">
+                                <label class="float-left">Chọn nhóm tuổi</label>
+                                <select class="form-control" name="MaNhomTuoi" required>
+                                    <option value="">Chọn nhóm tuổi</option>
+                                    @foreach (var item in db.NhomTuois.ToList())
+                                    {
+                                        <option value="@item.Id">@item.TenNhom</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <hr>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Thêm lớp học</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="modal animated zoomIn" id="themnhom" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        @using (Html.BeginForm("ThemNhomTuoi", "VanPhong", FormMethod.Post))
+        {
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="title" id="defaultModalLabel">Thêm nhóm tuổi</h6>
+                </div>
+                <div class="modal-body">
+                    <div class="row clearfix">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="TenNhom" placeholder="Nhập tên nhóm">
+                            </div>
+                        </div>
+
+                        <hr>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Thêm</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<script type="text/javascript" language="javascript">
+    function DeleteHs(Id) {
+        var rowAcc = "#rowAcc_" + Id;
+        var data = {
+                id: Id
+        };
+
+        Swal.fire({
+            icon: 'warning',
+              title: 'Bạn chắc chắn chứ?',
+              text: "Toàn bộ các thông tin liên quan đến lớp học cũng sẽ bị xóa!",
+              type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+          cancelButtonText: 'Đừng xóa',
+          confirmButtonText: 'Xóa luôn đi!',
+        }).then((result) => {
+          if (result.value) {
+            $.ajax({
+            type: "POST",
+            url: "@Url.Action("XoaHocSinh", "VanPhong" )",
+            data: data,
+            content: 'application/json; charset=utf-8',
+            success: function (data) {
+                $(rowAcc).hide();
+                Swal.fire('Thành công!','Đã xóa tài khoản.','success');
+            }
+            });
+          }
+        })
+    }
+</script>

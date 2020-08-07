@@ -1,0 +1,92 @@
+﻿@model List<SchoolManager.Models.ListDiemDanhGiaoVienModel>
+
+@{
+    Layout = null;
+    //Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    string name = "";
+}
+
+<div class="block-header">
+    <div class="row">
+        <div class="col-lg-3 text-left">
+            <i class="icon-close text-danger"></i> Vắng không phép<br />
+            <i class="icon-check  text-success"></i> Đã điểm danh<br />
+        </div>
+        <div class="col-lg-3 text-left">
+            <i class="icon-hourglass"></i> Ngày nghỉ<br />
+            <i class="icon-clock text-muted"></i> Ngày chưa đến
+        </div>
+    </div>
+</div>
+
+<div class="row clearfix">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Giáo viên</th>
+                                <th>Ngày sinh</th>
+                                @for (int j = 1; j <= ViewBag.songay + 1; j++)
+                                {
+                                    <th>@j</th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                if (name != item.HoTen)
+                                {
+                                    @Html.Raw("<tr>")
+                                <td>@item.HoTen</td>
+                                <td>@item.NgaySinh.ToString("dd/MM/yyyy")</td>
+                                if (item.TrangThai == "trống")
+                                {
+                                    <td title="trống"><i class="icon-clock  text-muted"></i> </td>
+                                }
+                                if (item.TrangThai == "ngày nghỉ")
+                                {
+                                    <td title="ngày nghỉ"><i class="icon-hourglass text-dark"></i> </td>
+                                }
+                                if (item.TrangThai == "đi")
+                                {
+                                    <td title="đã điểm danh"><i class="icon-check  text-success"></i></td>
+                                }
+                                if (item.TrangThai == "vắng")
+                                {
+                                    <td title="vắng"><i class="icon-close  text-danger"></i> </td>
+                                }
+                            }
+                            else
+                            {
+                                if (item.TrangThai == "trống")
+                                {
+                                    <td title="trống"><i class="icon-clock  text-muted"></i> </td>
+                                }
+                                if (item.TrangThai == "ngày nghỉ")
+                                {
+                                    <td title="ngày nghỉ"><i class="icon-hourglass text-dark"></i> </td>
+                                }
+                                if (item.TrangThai == "đi")
+                                {
+                                    <td title="đã điểm danh"><i class="icon-check  text-success"></i></td>
+                                }
+                                if (item.TrangThai == "vắng")
+                                {
+                                    <td title="vắng"><i class="icon-close  text-danger"></i> </td>
+                                }
+                            }
+                            name = item.HoTen;
+
+                        }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

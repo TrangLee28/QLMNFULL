@@ -1,0 +1,174 @@
+﻿
+@using SchoolManager.Models;
+@using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = "Đơn thuốc";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    TruongMamNonEntities db = new TruongMamNonEntities();
+    string getid = User.Identity.GetUserId();
+    AspNetUser me = db.AspNetUsers.Find(getid);
+}
+
+<script src="~/Content/ckeditor/ckeditor.js"></script>
+<script src="~/Content/ckfinder/ckfinder.js"></script>
+<div class="block-header">
+    <div class="row">
+        <div class="col-lg-6 col-md-8 col-sm-12">
+            <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a> Dánh sách Đơn thuốc</h2>
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Admin")"><i class="icon-home"></i></a></li>
+                <li class="breadcrumb-item">Quản trị</li>
+                <li class="breadcrumb-item active">Đơn thuốc</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row clearfix">
+    <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#themdiemdanh">Danh sách</a></li>
+
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#themdichvu">Thêm Đơn thuốc</a></li>
+    </ul>
+    <div class="tab-content col-lg-12">
+
+        <div class="col-lg-12 tab-pane active" id="themdiemdanh">
+            <div class="card">
+                <div class="header">
+                    <h2>Dánh sách Đơn thuốc</h2>
+                </div>
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-hover js-basic-example dataTable table-custom table-striped m-b-0 c_list">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Tên</th>
+                                    <th>Hàm lượng</th>
+                                    <th>Số lượng</th>
+                                    <th>Đơn vị</th>
+                                    <th>Cách dùng</th>
+                                    <th>Áp dụng cho</th>
+                                    <th>Trạng thái</th>
+                                    <th>Hành động</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in db.DonThuocs.Where(x => x.Id_PH == getid).ToList())
+                                {
+                                    <tr id="rowAcc_@item.Id">
+                                        <td>
+                                            <h6 class="mb-0">@item.Ten</h6>
+
+                                        </td>
+                                        <td>
+                                            <span class="text-info">@item.HamLuong</span>
+                                        </td>
+                                        <td>
+                                            <span class="text-danger">@item.SoLuong</span>
+                                        </td>
+                                        <td>
+                                            <span class="text-dark">@item.DonVi</span>
+                                        </td>
+                                        <td>
+                                            <span>@item.CachDung</span>
+                                        </td>
+                                        <td>
+                                            <span>@item.HocSinh.HoTen</span>
+                                        </td>
+                                        @if (!item.TrangThai)
+                                        {
+                                            <td>
+                                                @Html.ActionLink("Đã xong", "HienDonThuoc", new { id = item.Id }, new { @class = "text-white btn  btn-warning btn-sm", @title = "Bấm để hiện" })
+
+                                            </td>
+                                        }
+                                        else
+                                        {
+
+                                            <td>
+                                                @Html.ActionLink("Đang thực hiện", "HienDonThuoc", new { id = item.Id }, new { @class = "text-white btn  btn-success btn-sm", @title = "Bấm để ẩn" })
+
+                                            </td>
+                                        }
+                                        <td>
+                                            <a class="btn btn-sm btn-outline-secondary" title="Sửa" href="@Url.Action("ChiTiet", "DonThuoc", new { id = item.Id})"><i class="fa fa-edit"></i></a>
+                                            <a class="btn btn-sm btn-outline-danger" title="Xóa" onclick="DeleteAcc('@item.Id')"><i class="fa fa-trash-o"></i></a>
+                                        </td>
+                                    </tr>
+
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 tab-pane" id="themdichvu">
+            @using (Html.BeginForm("ThemDonThuoc", "DonThuoc", FormMethod.Post, new { role = "form", @enctype = "multipart/form-data" }))
+            {
+                <div class="card">
+                    <div class="header">
+                        <div class="form-group row col-md-12">
+                            <input type="hidden" name="Id_PH" value="@getid">
+                            <input type="text" class="form-control col-md-3 m-2" name="Ten" placeholder="Tên Đơn thuốc">
+                            <input type="text" class="form-control col-md-3 m-2" name="HamLuong" placeholder="Hàm lượng">
+                            <input type="number" class="form-control col-md-3 m-2" name="SoLuong" placeholder="Số lượng">
+                            <input type="text" class="form-control col-md-3 m-2" name="DonVi" placeholder="Đơn vị">
+                            <textarea name="CachDung" class="form-control col-md-6 m-2" rows="3" placeholder="Cách dùng"></textarea>
+                            <select title="Học sinh" class="form-control col-md-6 m-2" name="Id_HS" required>
+                                <option selected value="">Lựa chọn học sinh áp dụng</option>
+                                @foreach (var item in me.PhuHuynh.PhuHuynh_HocSinh.ToList())
+                                {
+                                    <option value="@item.HocSinh.Id">@item.HocSinh.HoTen</option>
+                                }
+                            </select>
+                        </div>
+                        <input type="submit" value="Thêm mới" class="m-2 btn btn-danger" />
+                    </div>
+                </div>
+                
+                
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    CKEDITOR.replace('editor', { customConfig: "/Content/ckeditor/config.js" });
+    //CKFinder.setupCKEditor(null,'/ckfinder');
+</script>
+<script type="text/javascript" language="javascript">
+    function DeleteAcc(Id) {
+        var rowAcc = "#rowAcc_" + Id;
+        var data = {
+                Id: Id
+        };
+
+        Swal.fire({
+            icon: 'warning',
+              title: 'Bạn chắc chắn chứ?',
+              text: "Toàn bộ các thông tin liên quan đến Đơn thuốc cũng sẽ bị xóa!",
+              type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+          cancelButtonText: 'Đừng xóa',
+          confirmButtonText: 'Xóa luôn đi!',
+        }).then((result) => {
+          if (result.value) {
+            $.ajax({
+            type: "POST",
+            url: "@Url.Action("XoaDonThuoc", "DonThuoc" )",
+            data: data,
+            content: 'application/json; charset=utf-8',
+            success: function (data) {
+                $(rowAcc).hide();
+                Swal.fire('Thành công!','Đã xóa Đơn thuốc.','success');
+            }
+            });
+          }
+        })
+    }
+</script>

@@ -1,0 +1,195 @@
+﻿
+@using SchoolManager.Models;
+@{
+    ViewBag.Title = "Thực đơn";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    TruongMamNonEntities db = new TruongMamNonEntities();
+}
+
+<script src="~/Content/ckeditor/ckeditor.js"></script>
+<script src="~/Content/ckfinder/ckfinder.js"></script>
+<div class="block-header">
+    <div class="row">
+        <div class="col-lg-6 col-md-8 col-sm-12">
+            <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a> Dánh sách Thực đơn</h2>
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Admin")"><i class="icon-home"></i></a></li>
+                <li class="breadcrumb-item">Quản trị</li>
+                <li class="breadcrumb-item active">Thực đơn</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row clearfix">
+    <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#themdiemdanh">Danh sách</a></li>
+
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#themdichvu">Thêm Thực đơn</a></li>
+    </ul>
+    <div class="tab-content col-lg-12">
+       
+        <div class="col-lg-12 tab-pane active" id="themdiemdanh">
+            <div class="card">
+                <div class="header">
+                    <h2>Dánh sách Thực đơn</h2>
+                </div>
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-hover js-basic-example dataTable table-custom table-striped m-b-0 c_list">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Tên Thực đơn</th>
+                                    <th>Nhóm tuổi</th>
+                                    <th>Trạng thái</th>
+                                    <th>Hành động</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in db.ThucDons.ToList())
+                                {
+                                    <tr id="rowAcc_@item.Id">
+                                        <td>
+                                            <a href="@Url.Action("ChiTiet", "DinhDuong", new { id = item.Id})"><h6 class="mb-0">@item.TenThucDon</h6></a>
+
+                                        </td>
+                                        <td>
+                                            <span class="badge text-info">@item.NhomTuoi.TenNhom</span>
+                                        </td>
+                                        @if (!item.TrangThai)
+                                        {
+                                            <td>
+                                                @Html.ActionLink("Đã ẩn", "HienThucDon", new { id = item.Id }, new { @class = "text-white btn  btn-warning btn-sm", @title = "Bấm để hiện" })
+
+                                            </td>
+                                        }
+                                        else
+                                        {
+
+                                            <td>
+                                                @Html.ActionLink("Đang hiện", "HienThucDon", new { id = item.Id }, new { @class = "text-white btn  btn-success btn-sm", @title = "Bấm để ẩn" })
+
+                                            </td>
+                                        }
+                                        <td>
+                                            <a class="btn btn-sm btn-outline-secondary" title="Sửa" href="@Url.Action("ChiTiet", "DinhDuong", new { id = item.Id})"><i class="fa fa-edit"></i></a>
+                                            <a class="btn btn-sm btn-outline-danger" title="Xóa" onclick="DeleteAcc('@item.Id')"><i class="fa fa-trash-o"></i></a>
+                                        </td>
+                                    </tr>
+
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 tab-pane" id="themdichvu">
+            @using (Html.BeginForm("ThemThucDon", "DinhDuong", FormMethod.Post, new { role = "form", @enctype = "multipart/form-data" }))
+            {
+                <div class="card">
+                    <div class="header">
+                        <div class="form-group w-50">
+                            <input type="text" class="form-control" name="TenThucDon" placeholder="Tên Thực đơn">
+                        </div>
+                        <div class="form-group">
+                            <input type="file" class="form-control-file" name="file" id="file" accept="image/*">
+                            <small id="fileHelp" class="form-text text-muted">Chọn ảnh minh họa cho Thực đơn</small>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="float-left">Nhóm tuổi áp dụng</label>
+                            <select class="form-control" name="MaNhom" required>
+                                <option value="">Chọn nhóm tuổi</option>
+                                @foreach (var item in db.NhomTuois.ToList())
+                                {
+                                    <option value="@item.Id">@item.TenNhom</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="body">
+
+                        <div>
+                            <label for="Des">Mô tả Thực đơn</label>
+                            <textarea name="MoTa" id="editor"></textarea>
+                            <input type="submit" value="Thêm mới" class="m-2 btn btn-danger" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal animated zoomIn" id="addcontact" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        @using (Html.BeginForm("ThemLoaiDichVu", "DichVu", FormMethod.Post, new { role = "form", @enctype = "multipart/form-data" }))
+        {
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="title" id="defaultModalLabel">Thêm Loại Thực đơn</h6>
+                </div>
+                <div class="modal-body">
+                    <div class="row clearfix">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="Ten" placeholder="Tên loại">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="MoTa" placeholder="Mô tả">
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Thêm</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<script>
+    CKEDITOR.replace('editor', { customConfig: "/Content/ckeditor/config.js" });
+    //CKFinder.setupCKEditor(null,'/ckfinder');
+</script>
+<script type="text/javascript" language="javascript">
+    function DeleteAcc(Id) {
+        var rowAcc = "#rowAcc_" + Id;
+        var data = {
+                Id: Id
+        };
+
+        Swal.fire({
+            icon: 'warning',
+              title: 'Bạn chắc chắn chứ?',
+              text: "Toàn bộ các thông tin liên quan đến Thực đơn cũng sẽ bị xóa!",
+              type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+          cancelButtonText: 'Đừng xóa',
+          confirmButtonText: 'Xóa luôn đi!',
+        }).then((result) => {
+          if (result.value) {
+            $.ajax({
+            type: "POST",
+            url: "@Url.Action("XoaThucDon", "DinhDuong" )",
+            data: data,
+            content: 'application/json; charset=utf-8',
+            success: function (data) {
+                $(rowAcc).hide();
+                Swal.fire('Thành công!','Đã xóa Thực đơn.','success');
+            }
+            });
+          }
+        })
+    }
+</script>

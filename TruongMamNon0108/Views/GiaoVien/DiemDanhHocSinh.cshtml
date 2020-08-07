@@ -1,0 +1,513 @@
+﻿@using SchoolManager.Models;
+@using System.Data.Entity.Core.Objects;
+@using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = "GiaoVien";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    TruongMamNonEntities db = new TruongMamNonEntities();
+    bool checkdiemdanh = true;
+    if (db.DiemDanhHocSinhs.Where(x => EntityFunctions.TruncateTime(x.ThoiGian) == EntityFunctions.TruncateTime(DateTime.Now)).Count() == 0)
+    {
+        checkdiemdanh = false;
+    }
+    GiaoVien giaoVien = db.GiaoViens.Find(User.Identity.GetUserId());
+    List<HocSinh> dshs = new List<HocSinh>();
+    
+}
+<link href="~/Content/assets/css/select2.min.css" rel="stylesheet" />
+<script src="~/Content/assets/js/select2.min.js"></script>
+
+<div class="block-header">
+
+    <div class="row">
+        <div class="col-lg-6 col-md-8 col-sm-12">
+            <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a>Điểm danh học sinh</h2>
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index","Admin")"><i class="icon-home"></i></a></li>
+                <li class="breadcrumb-item">Quản trị</li>
+                <li class="breadcrumb-item active">Học sinh</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row clearfix">
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#themdiemdanh">Điểm danh</a></li>
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#xemtheothang">Xem theo tháng</a></li>
+    </ul>
+    <div class="tab-content col-lg-12">
+        <div class="card tab-pane" id="xemtheothang">
+            <div class="header row">
+                <h2 class="col">Xem danh sách điểm danh học sinh</h2>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <select title="Chọn lớp học" class="form-control" style="width:100%" id="dslop">
+                            <option selected>Lựa chọn lớp học</option>
+                            @if (User.IsInRole("Giáo viên"))
+                            {
+                                if (giaoVien != null)
+                                {
+                                    foreach (var item in giaoVien.GiaoVien_Lops.Where(x => x.TrangThai == "Đang phụ trách").ToList())
+                                    {
+                                        <option value="@item.Lop1.Id">@item.Lop1.Lop1</option>
+                                        Lop l = item.Lop1;
+                                        foreach (var item2 in l.HocSinhs.ToList())
+                                        {
+                                            if(db.DiemDanhHocSinhs.Where(x => x.Id_HocSinh == item2.Id && x.DenVe == "Đưa đi" && EntityFunctions.TruncateTime(x.ThoiGian) == EntityFunctions.TruncateTime(DateTime.Now)).Count() == 0)
+                                            {
+                                                dshs.Add(item2);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            @if (User.IsInRole("Quản trị viên"))
+                            {
+                                foreach (var item in db.Lops)
+                                {
+                                    <option value="@item.Id">@item.Lop1</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" placeholder="chọn tháng trong năm" class="form-control" name="thoigian" id="datepicker">
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-sm btn-outline-danger" title="Xem" href="javascript:void(0);" onclick="Xem()"><i class="icon icon-eye"></i> Xem thông tin</button>
+                </div>
+            </div>
+            <div class="body" id="loadsdiemdanh">
+
+            </div>
+        </div>
+        <div class="card tab-pane active" id="themdiemdanh">
+            <div class="col-12">
+                <ul class="list-group p-3">
+                    @if (User.IsInRole("Giáo viên"))
+                    {
+                        foreach (var item in giaoVien.GiaoVien_Lops.Where(x => x.TrangThai == "Đang phụ trách").ToList())
+                        {
+                            <li class="list-group-item">@item.Lop1.Lop1: <b>@db.DiemDanhHocSinhs.Where(x => x.HocSinh.Lop.Id== item.Lop1.Id && EntityFunctions.TruncateTime(x.ThoiGian) == EntityFunctions.TruncateTime(DateTime.Now) && x.DenVe == "Đưa đi").Count()/@item.Lop1.HocSinhs.Count()</b></li>
+                        }
+                    }
+                    @if (User.IsInRole("Quản trị viên"))
+                    {
+                        foreach (var item in db.Lops.ToList())
+                        {
+                            <li class="list-group-item">@item.Lop1: <b>@db.DiemDanhHocSinhs.Where(x => x.HocSinh.Lop.Id == item.Id && EntityFunctions.TruncateTime(x.ThoiGian) == EntityFunctions.TruncateTime(DateTime.Now) && x.DenVe == "Đưa đi").Count()/@item.HocSinhs.Count()</b></li>
+                        }
+                    }
+
+                </ul>
+            </div>
+            <ul class="nav nav-tabs">
+                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#duadi">HS Đến</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#donve">HS Về</a></li>
+            </ul>
+            <div class="tab-content col-lg-12">
+                <div class="card tab-pane active" id="duadi">
+                    <div class="header row">
+                        <h2 class="col-md-3">Điểm danh hôm nay</h2>
+                        @if (dshs.Count() > 0)
+                        {
+                            if (User.IsInRole("Giáo viên"))
+                            {
+                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addcontact">Thêm điểm danh</button>
+                            }
+                            if (User.IsInRole("Quản trị viên"))
+                            {
+
+                            }
+
+                        }
+                        @using (Html.BeginForm("DiemDanhDuaDiTatCa", "GiaoVien", FormMethod.Get, new { @class = "col-md-2" }))
+                        {
+                            if (User.IsInRole("Giáo viên"))
+                            {
+                                <button type="submit" class="btn btn-warning">Điểm danh tất cả</button>
+                            }
+                            if (User.IsInRole("Quản trị viên"))
+                            {
+
+                            }
+
+                        }
+                        <h2 class="col-md-3">
+
+                            <select title="Lớp học đang phụ trách" class="form-control" name="lop" id="lophoccanxem">
+                                <option selected value="">Lựa chọn lớp học</option>
+                                @if (User.IsInRole("Giáo viên"))
+                                {
+                                    if (giaoVien != null)
+                                    {
+                                        foreach (var item in giaoVien.GiaoVien_Lops.Where(x => x.TrangThai == "Đang phụ trách").ToList())
+                                        {
+                                            <option value="@item.Lop1.Id">@item.Lop1.Lop1</option>
+                                        }
+                                    }
+                                }
+                                @if (User.IsInRole("Quản trị viên"))
+                                {
+                                    foreach (var item in db.Lops)
+                                    {
+                                        <option value="@item.Id">@item.Lop1</option>
+                                    }
+                                }
+                            </select>
+                        </h2>
+                        <div class="col-md-2">
+                            <input type="text" placeholder="chọn ngày" class="form-control" name="thoigian" id="thoigianngay">
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-sm btn-outline-danger" title="Xem" href="javascript:void(0);" onclick="Xemngay()"><i class="icon icon-eye"></i> Xem thông tin</button>
+                        </div>
+                    </div>
+                    <div class="body" id="dsdiemdanhhocsinh_ngay">
+
+                    </div>
+                </div>
+                <div class="card tab-pane" id="donve">
+                    <div class="header row">
+                        <h2 class="col-md-3">Điểm danh hôm nay</h2>
+                        @if (dshs.Count() > 0)
+                        {
+                            if (User.IsInRole("Giáo viên"))
+                            {
+                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addcontact">Thêm điểm danh</button>
+                            }
+                            if (User.IsInRole("Quản trị viên"))
+                            {
+
+                            }
+
+                        }
+                        @using (Html.BeginForm("DiemDanhDonVeTatCa", "GiaoVien", FormMethod.Get, new { @class = "col-md-2" }))
+                        {
+                            if (User.IsInRole("Giáo viên"))
+                            {
+                                <button type="submit" class="btn btn-warning">Điểm danh tất cả</button>
+                            }
+                            if (User.IsInRole("Quản trị viên"))
+                            {
+
+                            }
+
+                        }
+                        <h2 class="col-md-3">
+
+                            <select title="lớp học đang phụ trách" class="form-control" name="lop" id="lophoccanxem2">
+                                <option selected value="">Lựa chọn lớp học</option>
+                                @if (User.IsInRole("Giáo viên"))
+                                {
+                                    if (giaoVien != null)
+                                    {
+                                        foreach (var item in giaoVien.GiaoVien_Lops.Where(x => x.TrangThai == "Đang phụ trách").ToList())
+                                        {
+                                            <option value="@item.Lop1.Id">@item.Lop1.Lop1</option>
+                                        }
+                                    }
+                                }
+                                @if (User.IsInRole("Quản trị viên"))
+                                {
+                                    foreach (var item in db.Lops)
+                                    {
+                                        <option value="@item.Id">@item.Lop1</option>
+                                    }
+                                }
+                            </select>
+                        </h2>
+                        <div class="col-md-2">
+                            <input type="text" placeholder="chọn ngày" class="form-control" name="thoigian" id="thoigianngay2">
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-sm btn-outline-danger" title="Xem" href="javascript:void(0);" onclick="Xemngay2()"><i class="icon icon-eye"></i> Xem thông tin</button>
+                        </div>
+                    </div>
+                    <div class="body" id="dsdiemdanhhocsinh_ngay2">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal animated zoomIn" id="addcontact" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        @using (Html.BeginForm("DiemDanhHocSinh", "GiaoVien", FormMethod.Post, new { role = "form", @enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="title" id="defaultModalLabel">Thêm điểm danh học sinh</h6>
+                </div>
+                <div class="modal-body">
+                    <div class="row clearfix">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <select title="Chọn học sinh" class="form-control" style="width:100%" id="danhsachhocsinh" name="HocSinh">
+                                    <option selected>Lựa chọn tên học sinh</option>
+                                    @foreach (var item in dshs)
+                                    {
+                                        <option value="@item.Id">@item.HoTen - Lớp @item.LopHoc</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="nguoiduadon" placeholder="Người đưa đón">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="file" class="form-control-file" name="file" id="file" accept="image/*">
+                                <small id="fileHelp" class="form-text text-muted">Chọn hình ảnh học sinh điểm danh</small>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="fancy-radio custom-color-green">
+                                    <input name="trangthai" value="Đưa đi" type="radio" checked><span><i></i>Đưa đi</span>
+                                </label>
+                                <label class="fancy-radio custom-color-green">
+                                    <input name="trangthai" value="Đón về" type="radio"><span><i></i>Đón về</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" placeholder="Thời gian: ngày giờ đến" required class="form-control" name="thoigian" id="thoigian">
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Điểm danh</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="modal animated zoomIn" id="edit" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="form">
+        @using (Html.BeginForm("EditDiemDanhHocSinh", "GiaoVien", FormMethod.Post, new { role = "form", @enctype = "multipart/form-data" }))
+        {
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="title" id="defaultModalLabel">Sửa thông tin điểm danh</h6>
+                </div>
+                <div class="modal-body">
+                    <div class="row clearfix">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="hoten" id="hoten" placeholder="Tên học sinh" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="nguoiduadon" id="nguoiduadon" placeholder="Người đưa đón">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="file" class="form-control-file" name="file" id="file" accept="image/*">
+                                <small id="fileHelp" class="form-text text-muted">Chọn hình ảnh học sinh điểm danh</small>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="fancy-radio custom-color-green">
+                                    <input name="trangthai" value="Đưa đi" type="radio" id="duadi"><span><i></i>Đưa đi</span>
+                                </label>
+                                <label class="fancy-radio custom-color-green">
+                                    <input name="trangthai" value="Đón về" type="radio" id="donve"><span><i></i>Đón về</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" placeholder="Thời gian: ngày giờ đến" required class="form-control" name="thoigian" id="suathoigian">
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="Id" id="IdDiemDanh">
+                    <button type="submit" class="btn btn-primary">Cập nhật Điểm danh</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<script src="~/Content/assets/js/sweetalert2@9.js"></script>
+<script>
+    var data = { thoigian:'@DateTime.Now.ToString("MM/dd/yyyy")', trangthai:"Đưa đi" };
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("GetDiemDanhHocSinh_Ngay", "GiaoVien" )",
+            data: data,
+            content: 'application/json; charset=utf-8',
+            success: function (result) {
+                $("#dsdiemdanhhocsinh_ngay").empty();
+                $("#dsdiemdanhhocsinh_ngay").append(result);
+            }
+        });
+    data = { thoigian:'@DateTime.Now.ToString("MM/dd/yyyy")', trangthai:"Đón về" };
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("GetDiemDanhHocSinh_Ngay", "GiaoVien" )",
+            data: data,
+            content: 'application/json; charset=utf-8',
+            success: function (result) {
+                $("#dsdiemdanhhocsinh_ngay2").empty();
+                $("#dsdiemdanhhocsinh_ngay2").append(result);
+            }
+        });
+
+    function Sua(id) {
+
+        var hoten = "#name_" + id;
+        hoten = $(hoten).text();
+        var Lop = "#Lop_" + id;
+        Lop = $(Lop).text();
+        $('#hoten').val(hoten + " - Lớp " + Lop);
+
+        var duadon = "#duadon_" + id;
+        duadon = $(duadon).text();
+        $('#nguoiduadon').val(duadon);
+
+        var thoigian = "#thoigian_" + id;
+        thoigian = $(thoigian).text();
+        $('#suathoigian').val(thoigian.trim());
+
+        var dive = "#dive_" + id;
+        dive = $(dive).text().trim();
+        if (dive == "Đưa đi") {
+            $("#duadi").attr('checked', 'checked');
+        }
+
+        if (dive == "Đón về") {
+            $("#donve").attr('checked', 'checked');
+        }
+        $('#IdDiemDanh').val(id);
+        $('#edit').modal('show');
+    }
+
+
+    function Xem() {
+        console.log($('#dslop').val());
+        var initial = $('#datepicker').val().split(/\//);
+        //console.log([initial[1], initial[0], initial[2]].join('/')); //=> 'mm/dd/yyyy'
+        var t = [initial[1], initial[0], initial[2]].join('/');
+        var data = { Lop: $('#dslop').val(), thoigian: $('#datepicker').val()};
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("API_GetDiemDanhHocSinh_Lop", "GiaoVien" )",
+            data: data,
+            content: 'application/json; charset=utf-8',
+            success: function (result) {
+                $("#loadsdiemdanh").empty();
+                $("#loadsdiemdanh").append(result);
+            }
+            });
+    }
+
+    function Xemngay() {
+        var initial = $('#thoigianngay').val().split(/\//);
+        //console.log([initial[1], initial[0], initial[2]].join('/')); //=> 'mm/dd/yyyy'
+        var t = [initial[1], initial[0], initial[2]].join('/');
+        var data = { Lop: $('#lophoccanxem').val(), thoigian: $('#thoigianngay').val(), trangthai:"Đưa đi"};
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("GetDiemDanhHocSinh_Ngay", "GiaoVien" )",
+            data: data,
+            content: 'application/json; charset=utf-8',
+            success: function (result) {
+                $("#dsdiemdanhhocsinh_ngay").empty();
+                $("#dsdiemdanhhocsinh_ngay").append(result);
+            }
+            });
+    }
+
+    function Xemngay2() {
+        var initial = $('#thoigianngay2').val().split(/\//);
+        //console.log([initial[1], initial[0], initial[2]].join('/')); //=> 'mm/dd/yyyy'
+        var t = [initial[1], initial[0], initial[2]].join('/');
+        var data = { Lop: $('#lophoccanxem2').val(), thoigian: $('#thoigianngay2').val(), trangthai:"Đón về"};
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("GetDiemDanhHocSinh_Ngay", "GiaoVien" )",
+            data: data,
+            content: 'application/json; charset=utf-8',
+            success: function (result) {
+                $("#dsdiemdanhhocsinh_ngay2").empty();
+                $("#dsdiemdanhhocsinh_ngay2").append(result);
+            }
+            });
+    }
+    //$(function () {
+    $('#danhsachhocsinh').select2({
+        dropdownParent: $('#addcontact')
+    });
+    $('#dslop').select2();
+    $('#thoigian').datetimepicker();
+    $('#suathoigian').datetimepicker();
+    $('#thoigianngay').datetimepicker({
+        format: 'L'
+    });
+    $('#thoigianngay2').datetimepicker({
+        format: 'L'
+    });
+    //$("#datepicker").datetimepicker( {
+    //    viewMode: "months"
+    //});
+//});
+</script>
+<script>
+    $('#datepicker').datetimepicker({
+        format: "MM/YYYY",
+        viewMode: "months"
+    });
+
+    function Xoa(id) {
+        var data = { id: id };
+        Swal.fire({
+            icon: 'warning',
+              title: 'Bạn chắc chắn chứ?',
+              text: "Dữ liệu sẽ bị xóa khỏi hệ thống!",
+              type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+          cancelButtonText: 'Đừng xóa',
+          confirmButtonText: 'Xóa luôn đi!',
+        }).then((result) => {
+            console.log(result.value);
+            if (result.value) {
+
+                $("#row_" + id).hide();
+            $.ajax({
+            type: "POST",
+            url: "@Url.Action("DelDiemDanhHocSinh", "GiaoVien" )",
+            data: data,
+            content: 'application/json; charset=utf-8',
+                success: function (result) {
+                    if (result.success == "true") {
+                        
+                        Swal.fire('Thành công!', 'Đã xóa.', 'success');
+                        $("#row_" + id).hide();
+                    } else {
+                        //Swal.fire('Thất bại!', 'Chưa thể xóa, hãy thử lại sau.', 'error');
+                    }
+            }
+            });
+          }
+        })
+    }
+</script>

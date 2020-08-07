@@ -1,0 +1,140 @@
+﻿@model IdentitySample.Models.IndexViewModel
+@{
+    ViewBag.Title = "Quản lý tài khoản của bạn";
+}
+@using SchoolManager.Models;
+@using Microsoft.AspNet.Identity;
+@{
+    TruongMamNonEntities db = new TruongMamNonEntities();
+    string getid = User.Identity.GetUserId();
+    AspNetUser me = db.AspNetUsers.Find(getid);
+    bool isph = User.IsInRole("Phụ huynh");
+}
+<p class="text-success">@ViewBag.StatusMessage</p>
+
+<section class="blog-section" style="padding-top:0px !important">
+    <div class="auto-container">
+        <!--Sec Title-->
+        <div class="sec-title centered">
+            <div class="title-icon"><img src="images/icons/sec-title-icon-1.png" alt=""></div>
+            <h2>Tài khoản</h2>
+            <div class="title">Quản lý các thông tin tài khoản của bạn</div>
+        </div>
+        <div class="row clearfix">
+            <!--Blog Column-->
+            <div class="tab-column col-md-12 col-sm-12 col-xs-12">
+
+                <!--Product Info Tabs-->
+                <div class="product-info-tabs">
+                    <!--Product Tabs-->
+                    <div class="prod-tabs tabs-box">
+
+                        <!--Tab Btns-->
+                        <ul class="tab-btns tab-buttons clearfix">
+                            <li data-tab="#education" class="tab-btn active-btn">Thông tin</li>
+                            @if (isph)
+                            {
+                                <li data-tab="#activity" class="tab-btn">Dịch vụ đã đăng ký</li>
+                                <li data-tab="#painting" class="tab-btn">Học sinh</li>
+                            }
+
+                        </ul>
+
+                        <!--Tabs Container-->
+                        <div class="tabs-content">
+
+                            <!--Tab / Active Tab-->
+                            <div class="tab active-tab" id="education" style="display: block;">
+                                <div class="content">
+                                    <div class="col-md-8">
+                                        <p>
+                                            @(Model.HasPassword ? Html.ActionLink("Đổi mật khẩu", "ChangePassword")
+                                                : Html.ActionLink("Pick a password", "SetPassword"))
+                                        </p>
+                                        <p>
+                                            Họ và tên: @(me.HoTen ?? "Chưa có")
+                                        </p>
+                                        <p>
+                                            Số điện thoại: @(Model.PhoneNumber ?? "Chưa có")
+                                        </p>
+                                        <p>
+                                            Email: @(me.Email ?? "Chưa có")
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+                            @if (isph)
+                            {
+                                <!--Tab-->
+                                <div class="tab" id="activity" style="display: none;">
+                                    <div class="content">
+                                        @foreach (var item in db.DangKyDichVus.Where(x => x.MaPhuHuynh == me.Id).OrderByDescending(x => x.ThoiGianDK))
+                                        {
+                                            <div class="tab-boxed">
+                                                <div class="inner-box">
+                                                    <div class="image">
+                                                        <img style="width: 160px!important" src="/Content/UserUpload/img/dichvu/@String.Format(item.Id.ToString()+".png")" alt="">
+                                                    </div>
+                                                    <a href="@Url.Action("ChiTietDichVu","Home", new { Id = item.Id})"><h3>@item.DichVu.TenDichVu</h3></a>
+                                                    <span class="text-info">Đăng ký ngày: @item.ThoiGianDK.ToString("dd/MM/yyyy")</span>
+                                                    <div class="text">
+
+                                                        @if (item.TrangThai)
+                                                        {
+                                                            <span class="text-success">Đã thanh toán</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="text-danger">Chưa thanh thanh toán</span>
+                                                        }
+
+                                                    </div>
+
+                                                    @if (!item.TrangThai)
+                                                    {
+                                                        <a href="@Url.Action("HuyDKDichVu","Home", new { Id = item.Id})" class="btn btn-sm btn-danger">Hủy đăng ký</a>
+                                                    }
+
+                                                </div>
+                                            </div>
+                                        }
+
+                                    </div>
+                                </div>
+
+                                <!--Tab-->
+                                <div class="tab" id="painting" style="display: none;">
+                                    <div class="content">
+                                        @foreach (var item in me.PhuHuynh.PhuHuynh_HocSinh.ToList())
+                                        {
+                                            <div class="tab-boxed">
+                                                <div class="inner-box">
+                                                    <div class="image">
+                                                        <img src="/Content/UserUpload/img/hocsinh/@item.HocSinh.img" alt="">
+                                                    </div>
+                                                    <h3>@item.HocSinh.HoTen</h3>
+                                                    <div class="text">@item.HocSinh.Lop.Lop1</div>
+                                                </div>
+                                            </div>
+                                        }
+                                        <!--Tab Boxed-->
+
+
+                                    </div>
+                                </div>
+                            }
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+                <!--End Product Info Tabs-->
+
+            </div>
+
+        </div>
+    </div>
+</section>

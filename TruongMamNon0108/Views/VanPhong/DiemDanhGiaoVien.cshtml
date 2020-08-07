@@ -1,0 +1,270 @@
+﻿@using SchoolManager.Models;
+@using System.Data.Entity.Core.Objects;
+@using Microsoft.AspNet.Identity;
+
+@{
+    ViewBag.Title = "GiaoVien";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    TruongMamNonEntities db = new TruongMamNonEntities();
+    List<GiaoVien> dsgv = new List<GiaoVien>();
+    foreach (var item in db.GiaoViens.ToList())
+    {
+        if (db.DiemDanhGiaoViens.Where(x => x.Id_GiaoVien == item.Id && EntityFunctions.TruncateTime(x.ThoiGian) == EntityFunctions.TruncateTime(DateTime.Now)).Count() == 0)
+        {
+            dsgv.Add(item);
+        }
+    }
+}
+<link href="~/Content/assets/css/select2.min.css" rel="stylesheet" />
+<script src="~/Content/assets/js/select2.min.js"></script>
+
+<div class="block-header">
+
+    <div class="row">
+        <div class="col-lg-6 col-md-8 col-sm-12">
+            <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a>Điểm danh giáo viên</h2>
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#"><i class="icon-home"></i></a></li>
+                <li class="breadcrumb-item">Quản trị</li>
+                <li class="breadcrumb-item active">Giáo viên</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row clearfix">
+    <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#themdiemdanh">Thêm điểm danh</a></li>
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#xemtheothang">Xem theo tháng</a></li>
+    </ul>
+    <div class="tab-content col-lg-12">
+        <div class="card tab-pane active" id="themdiemdanh">
+            <div class="header">
+                <h2>Dánh sách giáo viên đã được điểm danh hôm nay</h2>
+                @if (User.IsInRole("Giáo viên"))
+                {
+
+                }
+                @if (User.IsInRole("Quản trị viên"))
+                {
+                    <ul class="header-dropdown">
+                        <li><a href="javascript:void(0);" class="btn btn-info" data-toggle="modal" data-target="#addcontact">Thêm điểm danh</a></li>
+                    </ul>
+                }
+
+            </div>
+            <div class="body">
+                <div class="table-responsive">
+                    <table class="table table-hover js-basic-example dataTable table-custom table-striped m-b-0 c_list">
+                        <thead class="">
+                            <tr>
+                                <th></th>
+                                <th>Họ và tên</th>
+                                <th>Điện thoại</th>
+                                <th>Giờ đến</th>
+                                @if (User.IsInRole("Giáo viên"))
+                                {
+
+                                }
+                                @if (User.IsInRole("Quản trị viên"))
+                                {
+                                    <th>Cập nhật</th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in db.DiemDanhGiaoViens.Where(x=>EntityFunctions.TruncateTime(x.ThoiGian) == EntityFunctions.TruncateTime(DateTime.Now)).ToList())
+                            {
+                                GiaoVien gv = db.GiaoViens.Where(x => x.Id == item.Id_GiaoVien).FirstOrDefault();
+                                <tr id="row_@item.Id">
+                                    <td class="width45">
+                                        <img src="../../UserUpload/img/account/@gv.img" class="rounded-circle avatar" alt="">
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("ChitietGiaoVien", "VanPhong", new { id = gv.Id})"><h6 class="mb-0" id="name_@item.Id">@gv.HoTen</h6></a>
+
+                                    </td>
+                                    <td>@(gv.SDT ?? "Chưa có")</td>
+                                    <td id="thoigian_@item.Id">
+                                        @item.ThoiGian.ToString("MM/dd/yyyy hh:mm tt")
+                                    </td>
+                                    @if (User.IsInRole("Giáo viên"))
+                                    {
+
+                                    }
+                                    @if (User.IsInRole("Quản trị viên"))
+                                    {
+                                        <td>
+                                            <a class="btn btn-sm btn-outline-secondary" title="Sửa" href="javascript:void(0);" onclick="Sua(@item.Id)"><i class="fa fa-edit"></i></a>
+                                            <a class="btn btn-sm btn-outline-danger" title="Xóa" href="javascript:void(0);" onclick="Xoa(@item.Id)" data-type="confirm"><i class="fa fa-trash-o"></i></a>
+                                        </td>
+                                    }
+
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="card tab-pane" id="xemtheothang">
+            <div class="header row">
+                <h2 class="col">Xem danh sách điểm danh giáo viên</h2>
+                <div class="col-md-3">
+                    <input type="text" placeholder="chọn tháng trong năm" class="form-control" name="thoigian" id="datepicker">
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-sm btn-outline-danger" title="Xem" href="javascript:void(0);" onclick="Xem()"><i class="icon icon-eye"></i> Xem thông tin</button>
+                </div>
+            </div>
+            <div class="body" id="loadsdiemdanh">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal animated zoomIn" id="addcontact" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        @using (Html.BeginForm("DiemDanhGiaoVien", "VanPhong", FormMethod.Post, new { role = "form", @enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="title" id="defaultModalLabel">Điểm danh mới</h6>
+                </div>
+                <div class="modal-body">
+                    <div class="row clearfix">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <select title="Chọn giáo viên" class="form-control" style="width:100%" id="danhsachgiaovien" name="idgiaovien" required>
+                                    <option selected value="">Lựa chọn tên giáo viên</option>
+                                    @foreach (var item in dsgv)
+                                    {
+                                        <option value="@item.Id">@item.HoTen</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <input type="text" placeholder="Thời gian: ngày giờ đến" class="form-control" name="thoigian" id="thoigian" required
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Điểm danh</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="modal animated zoomIn" id="edit" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="form">
+        @using (Html.BeginForm("EditDiemDanhGiaoVien", "VanPhong", FormMethod.Post, new { role = "form", @enctype = "multipart/form-data" }))
+        {
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="title" id="defaultModalLabel">Sửa thông tin điểm danh</h6>
+                </div>
+                <div class="modal-body">
+                    <div class="row clearfix">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="hoten" id="hoten" placeholder="Tên giáo viên" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" placeholder="Thời gian: ngày giờ đến" class="form-control" name="thoigian" id="suathoigian">
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <input type="hidden" name="id" id="IdDiemDanh">
+
+                    <button type="submit" class="btn btn-primary">Cập nhật Điểm danh</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<script src="~/Content/assets/js/sweetalert2@9.js"></script>
+<script>
+    function Xem() {
+        var data = { thoigian:$('#datepicker').val()};
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("API_GetDiemDanhGiaoVien", "VanPhong" )",
+            data: data,
+            content: 'application/json; charset=utf-8',
+            success: function (result) {
+                $("#loadsdiemdanh").empty();
+                $("#loadsdiemdanh").append(result);
+            }
+            });
+    }
+     $('#datepicker').datetimepicker({
+        format: "MM/YYYY",
+        viewMode: "months"
+    });
+    function Sua(id) {
+
+        var hoten = "#name_" + id;
+        hoten = $(hoten).text();
+        $('#hoten').val(hoten);
+
+        var thoigian = "#thoigian_" + id;
+        thoigian = $(thoigian).text();
+        $('#suathoigian').val(thoigian.trim());
+        $('#IdDiemDanh').val(id);
+        $('#edit').modal('show');
+    }
+
+
+    function Xoa(id) {
+        var data = { id: id };
+        Swal.fire({
+            icon: 'warning',
+              title: 'Bạn chắc chắn chứ?',
+              text: "Dữ liệu sẽ bị xóa khỏi hệ thống!",
+              type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+          cancelButtonText: 'Đừng xóa',
+          confirmButtonText: 'Xóa luôn đi!',
+        }).then((result) => {
+            console.log(result.value);
+            if (result.value) {
+
+                $("#row_" + id).hide();
+            $.ajax({
+            type: "POST",
+            url: "@Url.Action("DelDiemDanhGiaoVien", "VanPhong" )",
+            data: data,
+            content: 'application/json; charset=utf-8',
+                success: function (result) {
+                    if (result.success == "true") {
+                        $("#row_" + id).hide();
+                        Swal.fire('Thành công!', 'Đã xóa.', 'success');
+                    } else {
+                        //Swal.fire('Thất bại!', 'Chưa thể xóa, hãy thử lại sau.', 'error');
+                    }
+            }
+            });
+          }
+        })
+    }
+    //$(function () {
+    $('#danhsachgiaovien').select2();
+    $('#thoigian').datetimepicker();
+    $('#suathoigian').datetimepicker();
+//});
+</script>
