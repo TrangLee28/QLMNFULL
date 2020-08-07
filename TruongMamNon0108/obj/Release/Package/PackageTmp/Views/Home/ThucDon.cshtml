@@ -1,0 +1,115 @@
+﻿@using SchoolManager.Models;
+@{
+    ViewBag.Title = "Thực đơn";
+    TruongMamNonEntities db = new TruongMamNonEntities();
+    List<ThucDon> thucdons = db.ThucDons.Where(x=>x.TrangThai).ToList();
+}
+
+<section class="page-title" style="background-image:url(images/background/5.jpg);">
+    <div class="auto-container">
+        <div class="inner-box">
+            <h1>Thực đơn ngày</h1>
+            <ul class="bread-crumb">
+                <li><a href="index-2.html">Trang chủ</a></li>
+                <li>Thực đơn</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="classes-section">
+    <div class="auto-container">
+        <div class="row">
+            @foreach (var item in thucdons)
+            {
+                <div class="news-style-two col-md-4">
+                    <div class="inner-box">
+                        <!--Image Column-->
+                        <div class="image-column">
+                            <div class="image">
+                                <a href="@Url.Action("ChiTietThucDon","Home", new { Id = item.Id})"><img src="/Content/UserUpload/img/ThucDon/@String.Format(item.Id.ToString()+".png")" alt="" /></a>
+                                <span class="category">@item.NhomTuoi.TenNhom</span>
+                                <div class="overlay-layer">
+                                    <a href="@Url.Action("ChiTietThucDon","Home", new { Id = item.Id})"><span class="icon flaticon-unlink"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Content Column-->
+                        <div class="content-column">
+                            <div class="inner">
+                                @*<div class="post-date">Feb 29, 2017</div>*@
+                                <h3><a href="@Url.Action("ChiTietThucDon","Home", new { Id = item.Id})">@item.TenThucDon</a></h3>
+                                <div class="text">@item.NhomTuoi.TenNhom</div>
+                                <a href="@Url.Action("ChiTietThucDon","Home", new { Id = item.Id})" class="theme-btn btn-style-one">Xem chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+            <!--News Style Two-->
+
+
+
+        </div>
+
+
+    </div>
+</section>
+<!--End Page Title-->
+<!--Featured Section-->
+<section class="featured-section">
+    <div class="auto-container">
+        <!--Sec Title-->
+        <div class="sec-title centered">
+            <div class="title-icon"><img src="images/icons/sec-title-icon-1.png" alt="" /></div>
+            <h2>Thực đơn hôm nay</h2>
+            <div class="title">*******</div>
+            <div class="text">Danh sách thực đơn</div>
+        </div>
+        <!--End Sec Title-->
+
+        <div class="section-icon"><img src="images/icons/icon-1.png" alt="" /></div>
+        <div class="section-icon one"><img src="images/icons/icon-2.png" alt="" /></div>
+        <div class="section-icon two"><img src="images/icons/icon-3.png" alt="" /></div>
+        <div class="section-icon three"><img src="images/icons/icon-4.png" alt="" /></div>
+        <div class="row clearfix">
+            <!--Column/ Pull Left-->
+            <div class="column pull-left col-md-4 col-sm-6 col-xs-12">
+                @for (int i = 0; i < 3; i++)
+                {
+                    <div class="feature-block" style="clear:both">
+                        <img style="float: right; width:22%;height:auto" src="images/resource/feature-img.png" alt="" />
+                        <div style="float: left; width:76%;text-align: right;margin-bottom: 20px">
+                            <h3><a href="features.html">Thịt băm cuốn lá nốt</a></h3>
+                            <div class="text">Hàm lượng: 20g/bé</div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+            <!--Column / Pull Right-->
+            <div class="column pull-right col-md-4 col-sm-6 col-xs-12">
+                @for (int i = 0; i < 3; i++)
+                {
+                    <div class="feature-block" style="clear:both">
+                        <img style="float: left; width:22%;height:auto" src="images/icons/icon-4.png" alt="" />
+                        <div style="float: right; width:76%;text-align: left;margin-bottom: 20px;">
+                            <h3><a href="features.html">Thịt băm cuốn lá nốt</a></h3>
+                            <div class="text">Hàm lượng: 20g/bé</div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+            <div class="image-column col-md-4 col-sm-12 col-xs-12">
+                <figure class="image wow fadeInUp">
+                    <img src="images/resource/feature-img.png" alt="" />
+                </figure>
+            </div>
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,581 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TruongMamNonModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="img" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Deleted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="DangKyDichVus" Relationship="Self.FK_DangKyDichVu_AspNetUsers" FromRole="AspNetUsers" ToRole="DangKyDichVu" />
+    <NavigationProperty Name="DiemDanhHocSinhs" Relationship="Self.FK_DiemDanhHocSinh_AspNetUsers" FromRole="AspNetUsers" ToRole="DiemDanhHocSinhs" />
+    <NavigationProperty Name="GiaoVien" Relationship="Self.FK_GiaoViens_AspNetUsers" FromRole="AspNetUsers" ToRole="GiaoViens" />
+    <NavigationProperty Name="PhuHuynh" Relationship="Self.FK_PhuHuynhs_AspNetUsers" FromRole="AspNetUsers" ToRole="PhuHuynhs" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+  </EntityType>
+  <EntityType Name="C__MigrationHistory1">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DangKyDichVu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaPhuHuynh" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NguoiThu" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ThoiGianDK" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MaDichVu" Type="Int32" Nullable="false" />
+    <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ThoiGianThu" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_DangKyDichVu_AspNetUsers" FromRole="DangKyDichVu" ToRole="AspNetUsers" />
+    <NavigationProperty Name="DichVu" Relationship="Self.FK_DangKyDichVu_DichVu" FromRole="DangKyDichVu" ToRole="DichVu" />
+    <NavigationProperty Name="PhuHuynh" Relationship="Self.FK_DangKyDichVu_PhuHuynhs" FromRole="DangKyDichVu" ToRole="PhuHuynhs" />
+    <Property Name="TrangThai" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DichVu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenDichVu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MaLoaiDV" Type="Int32" Nullable="false" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Gia" Type="Double" Nullable="false" />
+    <Property Name="TrangThai" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="DangKyDichVus" Relationship="Self.FK_DangKyDichVu_DichVu" FromRole="DichVu" ToRole="DangKyDichVu" />
+    <NavigationProperty Name="LoaiDV" Relationship="Self.FK_DichVu_LoaiDV" FromRole="DichVu" ToRole="LoaiDV" />
+  </EntityType>
+  <EntityType Name="DiemDanhGiaoVien">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_GiaoVien" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ThoiGian" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="GiaoVien" Relationship="Self.FK_DiemDanhGiaoViens_GiaoViens" FromRole="DiemDanhGiaoViens" ToRole="GiaoViens" />
+  </EntityType>
+  <EntityType Name="DiemDanhHocSinh">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_HocSinh" Type="Int32" />
+    <Property Name="ThoiGian" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NguoiDuaDon" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="DenVe" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Id_NguoiDiemDanh" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_DiemDanhHocSinh_AspNetUsers" FromRole="DiemDanhHocSinhs" ToRole="AspNetUsers" />
+    <NavigationProperty Name="HocSinh" Relationship="Self.FK_DiemDanhHocSinh_HocSinhs" FromRole="DiemDanhHocSinhs" ToRole="HocSinhs" />
+  </EntityType>
+  <EntityType Name="GiaoVien_Lops">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id_GiaoVien" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Lop" Type="Int32" Nullable="false" />
+    <Property Name="TrangThai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="GiaoVien" Relationship="Self.FK_GiaoVien_Lops_GiaoViens" FromRole="GiaoVien_Lops" ToRole="GiaoViens" />
+    <NavigationProperty Name="Lop1" Relationship="Self.FK_GiaoVien_Lops_Lop" FromRole="GiaoVien_Lops" ToRole="Lop" />
+  </EntityType>
+  <EntityType Name="GiaoVien">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HoTen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="img" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="QueQuan" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DanToc" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="TonGiao" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="HKTT" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ChuyenNganh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TrinhDo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="TrinhTrangCongTac" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="HonNhan" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="SucKhoe" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="NgayTao" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NgaySinh" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="GioiTinh" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_GiaoViens_AspNetUsers" FromRole="GiaoViens" ToRole="AspNetUsers" />
+    <NavigationProperty Name="DiemDanhGiaoViens" Relationship="Self.FK_DiemDanhGiaoViens_GiaoViens" FromRole="GiaoViens" ToRole="DiemDanhGiaoViens" />
+    <NavigationProperty Name="GiaoVien_Lops" Relationship="Self.FK_GiaoVien_Lops_GiaoViens" FromRole="GiaoViens" ToRole="GiaoVien_Lops" />
+  </EntityType>
+  <EntityType Name="HocSinh">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HoTen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="BiDanh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DanToc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="NgaySinh" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="img" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="NgayTao" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="LopHoc" Type="Int32" Nullable="false" />
+    <Property Name="TrangThai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="HKTT" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DiemDanhHocSinhs" Relationship="Self.FK_DiemDanhHocSinh_HocSinhs" FromRole="HocSinhs" ToRole="DiemDanhHocSinhs" />
+    <NavigationProperty Name="Lop" Relationship="Self.FK_HocSinhs_Lop" FromRole="HocSinhs" ToRole="Lop" />
+    <NavigationProperty Name="PhuHuynh_HocSinh" Relationship="Self.FK_PhuHuynh_HocSinh_HocSinhs" FromRole="HocSinhs" ToRole="PhuHuynh_HocSinh" />
+  </EntityType>
+  <EntityType Name="LoaiDV">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenLoaiDV" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DichVus" Relationship="Self.FK_DichVu_LoaiDV" FromRole="LoaiDV" ToRole="DichVu" />
+  </EntityType>
+  <EntityType Name="Lop">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Lop1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="GiaoVien_Lops" Relationship="Self.FK_GiaoVien_Lops_Lop" FromRole="Lop" ToRole="GiaoVien_Lops" />
+    <NavigationProperty Name="HocSinhs" Relationship="Self.FK_HocSinhs_Lop" FromRole="Lop" ToRole="HocSinhs" />
+    <Property Name="MaNhom" Type="Int32" />
+    <NavigationProperty Name="NhomTuoi" Relationship="TruongMamNonModel.FK_Lop_NhomTuoi" FromRole="Lop" ToRole="NhomTuoi" />
+  </EntityType>
+  <EntityType Name="PhuHuynh_HocSinh">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_PhuHuynh" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Id_HocSinh" Type="Int32" />
+    <Property Name="QuanHe" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HocSinh" Relationship="Self.FK_PhuHuynh_HocSinh_HocSinhs" FromRole="PhuHuynh_HocSinh" ToRole="HocSinhs" />
+    <NavigationProperty Name="PhuHuynh" Relationship="Self.FK_PhuHuynh_HocSinh_PhuHuynhs" FromRole="PhuHuynh_HocSinh" ToRole="PhuHuynhs" />
+  </EntityType>
+  <EntityType Name="PhuHuynh">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="HoTen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="NamSinh" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="NoiCongTac" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="NgayTao" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_PhuHuynhs_AspNetUsers" FromRole="PhuHuynhs" ToRole="AspNetUsers" />
+    <NavigationProperty Name="DangKyDichVus" Relationship="Self.FK_DangKyDichVu_PhuHuynhs" FromRole="PhuHuynhs" ToRole="DangKyDichVu" />
+    <NavigationProperty Name="PhuHuynh_HocSinh" Relationship="Self.FK_PhuHuynh_HocSinh_PhuHuynhs" FromRole="PhuHuynhs" ToRole="PhuHuynh_HocSinh" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DangKyDichVu_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="0..1" />
+    <End Role="DangKyDichVu" Type="Self.DangKyDichVu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DangKyDichVu">
+        <PropertyRef Name="NguoiThu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DiemDanhHocSinh_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="0..1" />
+    <End Role="DiemDanhHocSinhs" Type="Self.DiemDanhHocSinh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DiemDanhHocSinhs">
+        <PropertyRef Name="Id_NguoiDiemDanh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GiaoViens_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+    <End Role="GiaoViens" Type="Self.GiaoVien" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GiaoViens">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhuHuynhs_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+    <End Role="PhuHuynhs" Type="Self.PhuHuynh" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PhuHuynhs">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DangKyDichVu_DichVu">
+    <End Role="DichVu" Type="Self.DichVu" Multiplicity="1" />
+    <End Role="DangKyDichVu" Type="Self.DangKyDichVu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DichVu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DangKyDichVu">
+        <PropertyRef Name="MaDichVu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DangKyDichVu_PhuHuynhs">
+    <End Role="PhuHuynhs" Type="Self.PhuHuynh" Multiplicity="1" />
+    <End Role="DangKyDichVu" Type="Self.DangKyDichVu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhuHuynhs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DangKyDichVu">
+        <PropertyRef Name="MaPhuHuynh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DichVu_LoaiDV">
+    <End Role="LoaiDV" Type="Self.LoaiDV" Multiplicity="1" />
+    <End Role="DichVu" Type="Self.DichVu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiDV">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DichVu">
+        <PropertyRef Name="MaLoaiDV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DiemDanhGiaoViens_GiaoViens">
+    <End Role="GiaoViens" Type="Self.GiaoVien" Multiplicity="0..1" />
+    <End Role="DiemDanhGiaoViens" Type="Self.DiemDanhGiaoVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GiaoViens">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DiemDanhGiaoViens">
+        <PropertyRef Name="Id_GiaoVien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DiemDanhHocSinh_HocSinhs">
+    <End Role="HocSinhs" Type="Self.HocSinh" Multiplicity="0..1" />
+    <End Role="DiemDanhHocSinhs" Type="Self.DiemDanhHocSinh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HocSinhs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DiemDanhHocSinhs">
+        <PropertyRef Name="Id_HocSinh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GiaoVien_Lops_GiaoViens">
+    <End Role="GiaoViens" Type="Self.GiaoVien" Multiplicity="1" />
+    <End Role="GiaoVien_Lops" Type="Self.GiaoVien_Lops" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GiaoViens">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GiaoVien_Lops">
+        <PropertyRef Name="Id_GiaoVien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GiaoVien_Lops_Lop">
+    <End Role="Lop" Type="Self.Lop" Multiplicity="1" />
+    <End Role="GiaoVien_Lops" Type="Self.GiaoVien_Lops" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GiaoVien_Lops">
+        <PropertyRef Name="Lop" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HocSinhs_Lop">
+    <End Role="Lop" Type="Self.Lop" Multiplicity="1" />
+    <End Role="HocSinhs" Type="Self.HocSinh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HocSinhs">
+        <PropertyRef Name="LopHoc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhuHuynh_HocSinh_HocSinhs">
+    <End Role="HocSinhs" Type="Self.HocSinh" Multiplicity="0..1" />
+    <End Role="PhuHuynh_HocSinh" Type="Self.PhuHuynh_HocSinh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HocSinhs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PhuHuynh_HocSinh">
+        <PropertyRef Name="Id_HocSinh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhuHuynh_HocSinh_PhuHuynhs">
+    <End Role="PhuHuynhs" Type="Self.PhuHuynh" Multiplicity="1" />
+    <End Role="PhuHuynh_HocSinh" Type="Self.PhuHuynh_HocSinh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhuHuynhs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PhuHuynh_HocSinh">
+        <PropertyRef Name="Id_PhuHuynh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="TruongMamNonEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+    <EntitySet Name="C__MigrationHistory1" EntityType="Self.C__MigrationHistory1" />
+    <EntitySet Name="DangKyDichVus" EntityType="Self.DangKyDichVu" />
+    <EntitySet Name="DichVus" EntityType="Self.DichVu" />
+    <EntitySet Name="DiemDanhGiaoViens" EntityType="Self.DiemDanhGiaoVien" />
+    <EntitySet Name="DiemDanhHocSinhs" EntityType="Self.DiemDanhHocSinh" />
+    <EntitySet Name="GiaoVien_Lops" EntityType="Self.GiaoVien_Lops" />
+    <EntitySet Name="GiaoViens" EntityType="Self.GiaoVien" />
+    <EntitySet Name="HocSinhs" EntityType="Self.HocSinh" />
+    <EntitySet Name="LoaiDVs" EntityType="Self.LoaiDV" />
+    <EntitySet Name="Lops" EntityType="Self.Lop" />
+    <EntitySet Name="PhuHuynh_HocSinh" EntityType="Self.PhuHuynh_HocSinh" />
+    <EntitySet Name="PhuHuynhs" EntityType="Self.PhuHuynh" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DangKyDichVu_AspNetUsers" Association="Self.FK_DangKyDichVu_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="DangKyDichVu" EntitySet="DangKyDichVus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DiemDanhHocSinh_AspNetUsers" Association="Self.FK_DiemDanhHocSinh_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="DiemDanhHocSinhs" EntitySet="DiemDanhHocSinhs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GiaoViens_AspNetUsers" Association="Self.FK_GiaoViens_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="GiaoViens" EntitySet="GiaoViens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhuHuynhs_AspNetUsers" Association="Self.FK_PhuHuynhs_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="PhuHuynhs" EntitySet="PhuHuynhs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DangKyDichVu_DichVu" Association="Self.FK_DangKyDichVu_DichVu">
+      <End Role="DichVu" EntitySet="DichVus" />
+      <End Role="DangKyDichVu" EntitySet="DangKyDichVus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DangKyDichVu_PhuHuynhs" Association="Self.FK_DangKyDichVu_PhuHuynhs">
+      <End Role="PhuHuynhs" EntitySet="PhuHuynhs" />
+      <End Role="DangKyDichVu" EntitySet="DangKyDichVus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DichVu_LoaiDV" Association="Self.FK_DichVu_LoaiDV">
+      <End Role="LoaiDV" EntitySet="LoaiDVs" />
+      <End Role="DichVu" EntitySet="DichVus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DiemDanhGiaoViens_GiaoViens" Association="Self.FK_DiemDanhGiaoViens_GiaoViens">
+      <End Role="GiaoViens" EntitySet="GiaoViens" />
+      <End Role="DiemDanhGiaoViens" EntitySet="DiemDanhGiaoViens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DiemDanhHocSinh_HocSinhs" Association="Self.FK_DiemDanhHocSinh_HocSinhs">
+      <End Role="HocSinhs" EntitySet="HocSinhs" />
+      <End Role="DiemDanhHocSinhs" EntitySet="DiemDanhHocSinhs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GiaoVien_Lops_GiaoViens" Association="Self.FK_GiaoVien_Lops_GiaoViens">
+      <End Role="GiaoViens" EntitySet="GiaoViens" />
+      <End Role="GiaoVien_Lops" EntitySet="GiaoVien_Lops" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GiaoVien_Lops_Lop" Association="Self.FK_GiaoVien_Lops_Lop">
+      <End Role="Lop" EntitySet="Lops" />
+      <End Role="GiaoVien_Lops" EntitySet="GiaoVien_Lops" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HocSinhs_Lop" Association="Self.FK_HocSinhs_Lop">
+      <End Role="Lop" EntitySet="Lops" />
+      <End Role="HocSinhs" EntitySet="HocSinhs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhuHuynh_HocSinh_HocSinhs" Association="Self.FK_PhuHuynh_HocSinh_HocSinhs">
+      <End Role="HocSinhs" EntitySet="HocSinhs" />
+      <End Role="PhuHuynh_HocSinh" EntitySet="PhuHuynh_HocSinh" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhuHuynh_HocSinh_PhuHuynhs" Association="Self.FK_PhuHuynh_HocSinh_PhuHuynhs">
+      <End Role="PhuHuynhs" EntitySet="PhuHuynhs" />
+      <End Role="PhuHuynh_HocSinh" EntitySet="PhuHuynh_HocSinh" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <EntitySet Name="NhomTuois" EntityType="TruongMamNonModel.NhomTuoi" />
+    <EntitySet Name="ThucDons" EntityType="TruongMamNonModel.ThucDon" />
+    <AssociationSet Name="FK_Lop_NhomTuoi" Association="TruongMamNonModel.FK_Lop_NhomTuoi">
+      <End Role="NhomTuoi" EntitySet="NhomTuois" />
+      <End Role="Lop" EntitySet="Lops" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ThucDon_NhomTuoi" Association="TruongMamNonModel.FK_ThucDon_NhomTuoi">
+      <End Role="NhomTuoi" EntitySet="NhomTuois" />
+      <End Role="ThucDon" EntitySet="ThucDons" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="NhomTuoi">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenNhom" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Lops" Relationship="TruongMamNonModel.FK_Lop_NhomTuoi" FromRole="NhomTuoi" ToRole="Lop" />
+    <NavigationProperty Name="ThucDons" Relationship="TruongMamNonModel.FK_ThucDon_NhomTuoi" FromRole="NhomTuoi" ToRole="ThucDon" />
+  </EntityType>
+  <EntityType Name="ThucDon">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenThucDon" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TrangThai" Type="Boolean" Nullable="false" />
+    <Property Name="MaNhom" Type="Int32" />
+    <NavigationProperty Name="NhomTuoi" Relationship="TruongMamNonModel.FK_ThucDon_NhomTuoi" FromRole="ThucDon" ToRole="NhomTuoi" />
+  </EntityType>
+  <Association Name="FK_Lop_NhomTuoi">
+    <End Type="TruongMamNonModel.NhomTuoi" Role="NhomTuoi" Multiplicity="0..1" />
+    <End Type="TruongMamNonModel.Lop" Role="Lop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhomTuoi">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Lop">
+        <PropertyRef Name="MaNhom" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ThucDon_NhomTuoi">
+    <End Type="TruongMamNonModel.NhomTuoi" Role="NhomTuoi" Multiplicity="0..1" />
+    <End Type="TruongMamNonModel.ThucDon" Role="ThucDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhomTuoi">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ThucDon">
+        <PropertyRef Name="MaNhom" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

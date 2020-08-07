@@ -1,0 +1,182 @@
+﻿@using SchoolManager.Models;
+
+@{
+    ViewBag.Title = "Chi tiết Lớp học";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    TruongMamNonEntities db = new TruongMamNonEntities();
+    int Id = ViewBag.Id;
+    Lop lop = db.Lops.Where(x => x.Id == Id).FirstOrDefault();
+}
+
+<div class="block-header">
+    <div class="row">
+        <div class="col-lg-6 col-md-8 col-sm-12">
+            <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a>@ViewBag.Title</h2>
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index-2.html"><i class="icon-home"></i></a></li>
+                <li class="breadcrumb-item">Lớp Học</li>
+                <li class="breadcrumb-item active">@ViewBag.Title</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12">
+        <div class="card client-detail">
+            <div class="body row">
+                <div class="profile-image col-md-3">
+                    <img class="img-thumbnail" src="../../UserUpload/img/lop/icon-3.png" alt="@lop.Lop1">
+                </div>
+                <div class="details col-md-8">
+                    @using (Html.BeginForm("EditLopHoc", "VanPhong", FormMethod.Post, new { role = "form", @enctype = "multipart/form-data" }))
+                    {
+                        <h4 class="m-t-0 m-b-0 showGV"><strong>@lop.Lop1</strong></h4>
+                        <input name="Id" type="hidden" value="@lop.Id" />
+
+                        <input placeholder="Nhập tên lớp học" name="tenlop" class="form-control showEditGV" type="text" value="@lop.Lop1" />
+
+                        <p>Số học sinh: <b>@lop.HocSinhs.Count()</b></p>
+                        <p class="showGV">
+                            Giáo viên chủ nhiệm:
+                            @if (lop.GiaoVien_Lops.Where(x => x.TrangThai == "Đang phụ trách").Count() > 0)
+                            {
+                                <b>
+                                    @lop.GiaoVien_Lops.Where(x => x.TrangThai == "Đang phụ trách").FirstOrDefault().GiaoVien.HoTen
+                                </b>
+                            }
+                            else
+                            {
+                                <b>Chưa có</b>
+                            }
+                        </p>
+                        <div class="showEditGV">
+                            <select title="Chọn học sinh" class="form-control" name="gvcn" id="gvcn">
+                                @if (lop.GiaoVien_Lops.Where(x => x.TrangThai == "Đang phụ trách").Count() > 0)
+                                {
+                                    <option selected value="@lop.GiaoVien_Lops.Where(x => x.TrangThai == "Đang phụ trách").FirstOrDefault().GiaoVien.Id">@lop.GiaoVien_Lops.Where(x => x.TrangThai == "Đang phụ trách").FirstOrDefault().GiaoVien.HoTen</option>
+                                }
+                                else
+                                {
+                                    <option selected>Lựa chọn giáo viên chủ nhiệm</option>
+                                }
+                                @foreach (var item in db.GiaoViens.ToList())
+                                {
+                                    <option value="@item.Id">@item.HoTen - @item.NgaySinh.Year</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="m-t-15" style="float: right">
+                            <a class="btn btn-sm btn-warning showGV" href="javascript:void(0)" onclick="EditGV();"><i class="fa fa-edit"></i></a>
+                            <button class="btn btn-sm btn-primary showEditGV" type="submit"><i class="fa fa-check"></i></button>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-danger showGV" onclick="DeleteAcc('@lop.Id')"><i class="fa fa-trash-o"></i></a>
+                            <a href="javascript:void(0)" class="btn btn-danger showEditGV" onclick="CancelEditGV();">Hủy thay đổi</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+            <div class="row">
+
+            </div>
+    </div>
+</div>
+<div class="row clearfix mb-5">
+    <div class="col-md-12">
+        <h5>Danh sách học sinh của lớp: </h5>
+        <div class="table-responsive">
+            <table class="table table-hover js-basic-example dataTable table-custom table-striped m-b-0 c_list">
+                <thead class="thead-dark">
+                    <tr>
+                        <th></th>
+                        <th>Họ và tên</th>
+                        <th>Bí danh</th>
+                        <th>Dân tộc</th>
+                        <th>lớp học</th>
+                        <th>Giới tính</th>
+                        <th>Ngày sinh</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in lop.HocSinhs.ToList())
+                    {
+                        <tr>
+                            <td class="width45">
+                                <img src="../../UserUpload/img/hocsinh/@item.img" class="rounded-circle avatar" alt="">
+                            </td>
+                            <td>
+                                <a href="@Url.Action("ChitietHocsinh", "VanPhong", new { id = item.Id})"><h6 class="mb-0">@item.HoTen</h6></a>
+
+                            </td>
+                            <td><span>@(item.BiDanh ?? "Chưa có")</span></td>
+                            <td>@(item.DanToc ?? "Chưa có")</td>
+                            <td>@(item.Lop.Lop1 ?? "Chưa có")</td>
+                            <td>@(item.GioiTinh ?? "Chưa có")</td>
+
+                            <td>
+                                @item.NgaySinh.ToString("dd/MM/yyyy")
+                            </td>
+                            <td>
+                                <a class="btn btn-sm btn-outline-warning" title="Xem chi tiết" href="@Url.Action("ChiTietHocSinh", "VanPhong", new { Id = item.Id})"><i class="fa fa-eye"></i></a>
+                                <a class="btn btn-sm btn-outline-danger" title="Xóa" onclick="DeleteHs('@item.Id')"><i class="fa fa-trash-o"></i></a>
+
+                            </td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<link href="~/Content/assets/css/select2.min.css" rel="stylesheet" />
+<script src="~/Content/assets/js/select2.min.js"></script>
+<script type="text/javascript" language="javascript">
+    $('#gvcn').select2();
+        $('.showEditGV').hide();
+
+    function CancelEditGV() {
+        $('.showGV').show();
+        $('.showEditGV').hide();
+    }
+    
+    function EditGV() {
+
+        $('.showGV').hide();
+        $('.showEditGV').show();
+
+    }
+     function DeleteAcc(Id) {
+        var rowAcc = "#rowAcc_" + Id;
+        var data = {
+                id: Id
+        };
+
+        Swal.fire({
+            icon: 'warning',
+              title: 'Bạn chắc chắn chứ?',
+              text: "Toàn bộ các thông tin liên quan đến giáo viên cũng sẽ bị xóa!",
+              type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+          cancelButtonText: 'Đừng xóa',
+          confirmButtonText: 'Xóa luôn đi!',
+        }).then((result) => {
+          if (result.value) {
+            $.ajax({
+            type: "POST",
+            url: "@Url.Action("Delete", "UsersAdmin" )",
+            data: data,
+            content: 'application/json; charset=utf-8',
+            success: function (data) {
+                $(rowAcc).hide();
+                Swal.fire('Thành công!','Đã xóa tài khoản.','success');
+            }
+            });
+          }
+        })
+    }
+</script>

@@ -1,0 +1,231 @@
+﻿@using SchoolManager.Models;
+
+@{
+    ViewBag.Title = "Chi tiết Giáo viên";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    TruongMamNonEntities db = new TruongMamNonEntities();
+    string Id = ViewBag.Id;
+    AspNetUser user = db.AspNetUsers.Where(x => x.Id == Id).FirstOrDefault();
+}
+
+<div class="block-header">
+    <div class="row">
+        <div class="col-lg-6 col-md-8 col-sm-12">
+            <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a>@ViewBag.Title</h2>
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index-2.html"><i class="icon-home"></i></a></li>
+                <li class="breadcrumb-item">Giáo viên</li>
+                <li class="breadcrumb-item active">@ViewBag.Title</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12">
+        <div class="card client-detail">
+            <div class="body row">
+                <div class="profile-image col-md-3">
+                    <img class="img-thumbnail" src="../../UserUpload/img/account/@user.img" alt="@user.GiaoVien.HoTen">
+                </div>
+                <div class="details col-md-8">
+                    <h4 class="m-t-0 m-b-0"><strong>@user.GiaoVien.HoTen</strong></h4>
+                    <span class="job_post">@user.GiaoVien.NgaySinh.ToString("dd/MM/yyyy")</span>
+                    <p>Email: <b>@(user.Email ?? "chưa có")</b></p>
+                    <p>Quê quán: @(user.GiaoVien.QueQuan ?? "chưa có")</p>
+                    <p>
+                        Chủ nhiệm Lớp:
+                        @if (user.GiaoVien.GiaoVien_Lops.Count() > 0)
+                        {
+                            foreach (var lop in user.GiaoVien.GiaoVien_Lops.ToList())
+                            {
+                                <b>@lop.Lop1.Lop1 ;</b>
+                            }
+                        }
+                        else
+                        {
+                            <b>chưa có</b>
+                        }
+
+                    </p>
+                    <div class="m-t-15" style="float: right">
+                        <button class="btn btn-warning" onclick="EditGV();"><i class="fa fa-edit"></i> Sửa</button>
+                        <button class="btn btn-danger" onclick="DeleteAcc('@user.Id')"><i class="fa fa-trash-o"></i> Xóa</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @using (Html.BeginForm("EditGiaoVien", "VanPhong", FormMethod.Post, new { role = "form", @enctype = "multipart/form-data" }))
+        {
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="body">
+                            <ul class=" list-unstyled basic-list">
+                                <li>
+                                    Tài khoản:
+                                    <span class="badge badge-primary">@(user.UserName ?? "chưa có")</span>
+                                </li>
+                                <li>
+                                    Dân tộc:
+                                    <span class="badge badge-primary showGV">@(user.GiaoVien.DanToc ?? "chưa có")</span>
+                                    <input placeholder="Nhập dân tộc" name="DanToc" class="form-control showEditGV" type="text" value="@user.GiaoVien.DanToc" />
+
+                                </li>
+                                <li>
+                                    Tôn giáo:
+                                    <span class="badge-purple badge showGV">@(user.GiaoVien.TonGiao ?? "chưa có")</span>
+                                    <input placeholder="Nhập Tôn giáo" name="TonGiao" class="form-control showEditGV" type="text" value="@user.GiaoVien.TonGiao" />
+
+                                </li>
+                                <li>
+                                    Ngày sinh:
+                                    <span class="badge-purple badge showGV">@(user.GiaoVien.NgaySinh.ToString("dd/MM/yyyy") ?? "chưa có")</span>
+                                    <input type="date" class="form-control date showEditGV" id="NgaySinh" name="NgaySinh" value="@user.GiaoVien.NgaySinh.ToString("yyyy-MM-dd")" placeholder="Ngày sinh, ví dụ: 30/07/1990">
+
+                                </li>
+                                <li>
+                                    HKTT:
+                                    <span class="badge-purple showGV">@(user.GiaoVien.HKTT ?? "chưa có")</span>
+                                    <input placeholder="Nhập hộ khẩu thường trú" name="NgaySinh" class="form-control showEditGV" type="text" value="@user.GiaoVien.HKTT" />
+
+                                </li>
+                                <li>
+                                    Số điện thoại:
+                                    <span class="badge-danger badge showGV">@(user.GiaoVien.SDT ?? "chưa có")</span>
+                                    <input placeholder="Nhập Số điện thoại" name="SDT" class="form-control showEditGV" type="text" value="@user.GiaoVien.SDT" />
+
+                                </li>
+                                <li>
+                                    Giới tính:
+                                    <span class="badge-info badge showGV">@(user.GiaoVien.GioiTinh ?? "chưa có")</span>
+                                    @if (user.GiaoVien.GioiTinh == "Nam")
+                                    {
+                                        <div class="form-group showEditGV">
+                                            <label class="fancy-radio custom-color-green">
+                                                <input name="GioiTinh" value="Nam" type="radio" checked><span><i></i>Nam</span>
+                                            </label>
+                                            <label class="fancy-radio custom-color-green">
+                                                <input name="GioiTinh" value="Nữ" type="radio"><span><i></i>Nữ</span>
+                                            </label>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="form-group showEditGV">
+                                            <label class="fancy-radio custom-color-green">
+                                                <input name="GioiTinh" value="Nam" type="radio" checked=""><span><i></i>Nam</span>
+                                            </label>
+                                            <label class="fancy-radio custom-color-green">
+                                                <input name="GioiTinh" value="Nữ" type="radio" checked><span><i></i>Nữ</span>
+                                            </label>
+                                        </div>
+                                    }
+                                </li>
+                            </ul>
+                            <button class="btn btn-primary showEditGV" type="submit"><i class="fa fa-check"></i> Lưu thay đổi</button>
+                            <a href="javascript:void(0)" class="btn btn-danger showEditGV" onclick="CancelEditGV();">Hủy thay đổi</a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="body">
+                            <ul class=" list-unstyled basic-list">
+                                <li>
+                                    Chuyên ngành:
+                                    <span class="badge badge-primary showGV">@(user.GiaoVien.ChuyenNganh ?? "chưa có")</span>
+                                    <input placeholder="Nhập Chuyên ngành" name="ChuyenNganh" class="form-control showEditGV" type="text" value="@user.GiaoVien.ChuyenNganh" />
+
+                                </li>
+                                <li>
+                                    Quê quán:
+                                    <span class="badge badge-primary showGV">@(user.GiaoVien.QueQuan ?? "chưa có")</span>
+                                    <input placeholder="Nhập Quê quán" name="QueQuan" class="form-control showEditGV" type="text" value="@user.GiaoVien.QueQuan" />
+
+                                </li>
+                                <li>
+                                    Trình độ:
+                                    <span class="badge-purple badge showGV">@(user.GiaoVien.TrinhDo ?? "chưa có")</span>
+                                    <input placeholder="Nhập Trình độ" class="form-control showEditGV" type="text" value="@user.GiaoVien.TrinhDo" />
+
+                                </li>
+                                <li>
+                                    Hôn nhân:
+                                    <span class="badge-purple badge showGV">@(user.GiaoVien.HonNhan ?? "chưa có")</span>
+                                    <input placeholder="Nhập Hôn nhân" name="HonNhan" class="form-control showEditGV" type="text" value="@user.GiaoVien.HonNhan" />
+
+                                </li>
+                                <li>
+                                    Sức khỏe:
+                                    <span class="badge-danger badge showGV">@(user.GiaoVien.SucKhoe ?? "chưa có")</span>
+                                    <input placeholder="Nhập Sức khỏe" name="SucKhoe" class="form-control showEditGV" type="text" value="@user.GiaoVien.SucKhoe" />
+
+                                </li>
+                                <li>
+                                    Ngày tạo:
+                                    <span class="badge-purple badge">@(user.GiaoVien.NgayTao.ToString("dd/MM/yyyy") ?? "chưa có")</span>
+                                </li>
+                                <li>
+                                    Trạng thái công tác:
+                                    <span class="badge-info badge showGV">@(user.GiaoVien.TrinhTrangCongTac ?? "Đang làm")</span>
+                                    <input name="TrinhTrangCongTac" placeholder="Nhập Trạng thái công tác" class="form-control showEditGV" type="text" value="@(user.GiaoVien.TrinhTrangCongTac ?? "Đang làm")" />
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+</div>
+
+<script type="text/javascript" language="javascript">
+    $('.showEditGV').hide();
+
+    function CancelEditGV() {
+        $('.showGV').show();
+        $('.showEditGV').hide();
+    }
+    function DeleteAcc(Id) {
+        var rowAcc = "#rowAcc_" + Id;
+        var data = {
+                id: Id
+        };
+
+        Swal.fire({
+            icon: 'warning',
+              title: 'Bạn chắc chắn chứ?',
+              text: "Toàn bộ các thông tin liên quan đến giáo viên cũng sẽ bị xóa!",
+              type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+          cancelButtonText: 'Đừng xóa',
+          confirmButtonText: 'Xóa luôn đi!',
+        }).then((result) => {
+          if (result.value) {
+            $.ajax({
+            type: "POST",
+            url: "@Url.Action("Delete", "UsersAdmin" )",
+            data: data,
+            content: 'application/json; charset=utf-8',
+            success: function (data) {
+                $(rowAcc).hide();
+                Swal.fire('Thành công!','Đã xóa tài khoản.','success');
+            }
+            });
+          }
+        })
+    }
+    function EditGV() {
+        
+        $('.showGV').hide();
+        $('.showEditGV').show();
+         
+    }
+</script>

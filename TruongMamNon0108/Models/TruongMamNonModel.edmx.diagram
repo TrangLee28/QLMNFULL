@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cc1f6dd9cfc5450f98f4b37e9f105af8" Name="Diagram1">
+        <EntityTypeShape EntityType="TruongMamNonModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruongMamNonModel.AspNetRole" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruongMamNonModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruongMamNonModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruongMamNonModel.AspNetUser" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruongMamNonModel.C__MigrationHistory1" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruongMamNonModel.DangKyDichVu" Width="1.5" PointX="7.5" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruongMamNonModel.DichVu" Width="1.5" PointX="5.25" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruongMamNonModel.DiemDanhGiaoVien" Width="1.5" PointX="7.5" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruongMamNonModel.DiemDanhHocSinh" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruongMamNonModel.GiaoVien_Lops" Width="1.5" PointX="7.5" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruongMamNonModel.GiaoVien" Width="1.5" PointX="5.25" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruongMamNonModel.HocSinh" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruongMamNonModel.LoaiDV" Width="1.5" PointX="3" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruongMamNonModel.Lop" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruongMamNonModel.PhuHuynh_HocSinh" Width="1.5" PointX="7.5" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruongMamNonModel.PhuHuynh" Width="1.5" PointX="5.25" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruongMamNonModel.sysdiagram" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="TruongMamNonModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="TruongMamNonModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="TruongMamNonModel.FK_DangKyDichVu_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="TruongMamNonModel.FK_DiemDanhHocSinh_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="TruongMamNonModel.FK_GiaoViens_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="TruongMamNonModel.FK_PhuHuynhs_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="TruongMamNonModel.FK_DangKyDichVu_DichVu" ManuallyRouted="false" />
+        <AssociationConnector Association="TruongMamNonModel.FK_DangKyDichVu_PhuHuynhs" ManuallyRouted="false" />
+        <AssociationConnector Association="TruongMamNonModel.FK_DichVu_LoaiDV" ManuallyRouted="false" />
+        <AssociationConnector Association="TruongMamNonModel.FK_DiemDanhGiaoViens_GiaoViens" ManuallyRouted="false" />
+        <AssociationConnector Association="TruongMamNonModel.FK_DiemDanhHocSinh_HocSinhs" ManuallyRouted="false" />
+        <AssociationConnector Association="TruongMamNonModel.FK_GiaoVien_Lops_GiaoViens" ManuallyRouted="false" />
+        <AssociationConnector Association="TruongMamNonModel.FK_GiaoVien_Lops_Lop" ManuallyRouted="false" />
+        <AssociationConnector Association="TruongMamNonModel.FK_HocSinhs_Lop" ManuallyRouted="false" />
+        <AssociationConnector Association="TruongMamNonModel.FK_PhuHuynh_HocSinh_HocSinhs" ManuallyRouted="false" />
+        <AssociationConnector Association="TruongMamNonModel.FK_PhuHuynh_HocSinh_PhuHuynhs" ManuallyRouted="false" />
+        <AssociationConnector Association="TruongMamNonModel.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TruongMamNonModel.NhomTuoi" Width="1.5" PointX="0.75" PointY="5.375" />
+        <EntityTypeShape EntityType="TruongMamNonModel.ThucDon" Width="1.5" PointX="3" PointY="8.25" />
+        <AssociationConnector Association="TruongMamNonModel.FK_Lop_NhomTuoi" />
+        <AssociationConnector Association="TruongMamNonModel.FK_ThucDon_NhomTuoi" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

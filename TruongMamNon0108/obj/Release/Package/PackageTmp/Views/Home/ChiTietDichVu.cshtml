@@ -1,0 +1,100 @@
+﻿   <!--Page Title-->
+@model SchoolManager.Models.DichVu
+@using SchoolManager.Models;
+@{
+    ViewBag.Title = "Dịch vụ";
+    TruongMamNonEntities db = new TruongMamNonEntities();
+}
+<section class="page-title" style="background-image:url(images/background/5.jpg);">
+    <div class="auto-container">
+        <div class="inner-box">
+            <h1>Chi tiết dịch vụ</h1>
+            <ul class="bread-crumb">
+                <li><a href="index-2.html">Trang chủ</a></li>
+                <li>Dịch vụ</li>
+                <li>Chi tiết dịch vụ</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!--End Page Title-->
+<!--Sidebar Page-->
+<div class="sidebar-page-container">
+    <div class="auto-container">
+        <div class="row clearfix">
+
+            <!--Content Side-->
+            <div class="content-side col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <!--Blog-->
+                <section class="blog-single">
+
+                    <!--News Style Four-->
+                    <div class="news-style-four">
+                        <div class="inner-box">
+                            <!--Image Column-->
+                            <div class="image">
+                                <img src="/Content/UserUpload/img/dichvu/@String.Format(Model.Id.ToString()+".png")" alt="" />
+                            </div>
+                            <!--Content Column-->
+                            <div class="content-column">
+                                <div class="inner">
+                                    <div class="post-date">Giá: @Model.Gia VNĐ</div>
+                                    <h3>@Model.TenDichVu</h3>
+
+                                    <div class="text">
+
+                                        @Html.Raw(Model.MoTa)
+
+
+                                    </div>
+                                    <a href="@Url.Action("DangKyDichVu","Home", new { Id = Model.Id})" class="theme-btn btn-style-one">Đăng ký ngay</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </section>
+
+            </div>
+
+            <!--Sidebar-->
+            <div class="sidebar-side col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <aside class="sidebar">
+
+                    <!--Services Category Widget-->
+                    <div class="sidebar-widget category-widget">
+                        <div class="sidebar-title">
+                            <h3>Loại dịch vụ</h3>
+                        </div>
+                        <ul>
+                            @foreach (var item in db.LoaiDVs.Where(x => x.DichVus.Count() > 0).ToList())
+                            {
+                                <li><a>@item.TenLoaiDV <span>(@item.DichVus.Count())</span></a></li>
+                            }
+
+                        </ul>
+                    </div>
+
+                    <!--Services Post Widget-->
+                    <div class="sidebar-widget popular-posts">
+                        <div class="sidebar-title">
+                            <h3>Các dịch vụ khác</h3>
+                        </div>
+                        <!--Post-->
+                        <article class="post">
+                            @foreach (var item in db.DichVus.Where(x => x.TrangThai && x.Id!=Model.Id).Take(5).ToList())
+                            {
+                                <figure class="post-thumb img-circle"><a href="@Url.Action("ChiTietDichVu","Home", new { Id = item.Id})"><img src="/Content/UserUpload/img/dichvu/@String.Format(item.Id.ToString()+".png")" alt=""></a></figure>
+                                <div class="text"><a href="@Url.Action("ChiTietDichVu","Home", new { Id = item.Id})">@item.TenDichVu</a></div>
+                            }
+
+                        </article>
+                    </div>
+
+                </aside>
+            </div>
+
+        </div>
+    </div>
+</div>

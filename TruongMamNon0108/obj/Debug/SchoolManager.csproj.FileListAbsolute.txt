@@ -1,0 +1,621 @@
+F:\UserManager\bin\QuanLyCongViec.dll.config
+F:\UserManager\bin\QuanLyCongViec.dll
+F:\UserManager\bin\QuanLyCongViec.pdb
+F:\UserManager\bin\roslyn\csc.exe
+F:\UserManager\bin\roslyn\csc.exe.config
+F:\UserManager\bin\roslyn\csc.rsp
+F:\UserManager\bin\roslyn\csi.exe
+F:\UserManager\bin\roslyn\csi.rsp
+F:\UserManager\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\UserManager\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\UserManager\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+F:\UserManager\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\UserManager\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+F:\UserManager\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\UserManager\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\UserManager\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+F:\UserManager\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+F:\UserManager\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\UserManager\bin\roslyn\System.AppContext.dll
+F:\UserManager\bin\roslyn\System.Collections.Immutable.dll
+F:\UserManager\bin\roslyn\System.Diagnostics.StackTrace.dll
+F:\UserManager\bin\roslyn\System.IO.FileSystem.dll
+F:\UserManager\bin\roslyn\System.IO.FileSystem.Primitives.dll
+F:\UserManager\bin\roslyn\System.Reflection.Metadata.dll
+F:\UserManager\bin\roslyn\vbc.exe
+F:\UserManager\bin\roslyn\vbc.exe.config
+F:\UserManager\bin\roslyn\vbc.rsp
+F:\UserManager\bin\roslyn\VBCSCompiler.exe
+F:\UserManager\bin\roslyn\VBCSCompiler.exe.config
+F:\UserManager\bin\Antlr3.Runtime.dll
+F:\UserManager\bin\EntityFramework.dll
+F:\UserManager\bin\EntityFramework.SqlServer.dll
+F:\UserManager\bin\Microsoft.AspNet.Identity.Core.dll
+F:\UserManager\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+F:\UserManager\bin\Microsoft.AspNet.Identity.Owin.dll
+F:\UserManager\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\UserManager\bin\Microsoft.Owin.dll
+F:\UserManager\bin\Microsoft.Owin.Host.SystemWeb.dll
+F:\UserManager\bin\Microsoft.Owin.Security.Cookies.dll
+F:\UserManager\bin\Microsoft.Owin.Security.dll
+F:\UserManager\bin\Microsoft.Owin.Security.Facebook.dll
+F:\UserManager\bin\Microsoft.Owin.Security.Google.dll
+F:\UserManager\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+F:\UserManager\bin\Microsoft.Owin.Security.OAuth.dll
+F:\UserManager\bin\Microsoft.Owin.Security.Twitter.dll
+F:\UserManager\bin\Microsoft.Web.Infrastructure.dll
+F:\UserManager\bin\Newtonsoft.Json.dll
+F:\UserManager\bin\Owin.dll
+F:\UserManager\bin\System.Web.Helpers.dll
+F:\UserManager\bin\System.Web.Mvc.dll
+F:\UserManager\bin\System.Web.Optimization.dll
+F:\UserManager\bin\System.Web.Razor.dll
+F:\UserManager\bin\System.Web.WebPages.Deployment.dll
+F:\UserManager\bin\System.Web.WebPages.dll
+F:\UserManager\bin\System.Web.WebPages.Razor.dll
+F:\UserManager\bin\WebGrease.dll
+F:\UserManager\bin\Antlr3.Runtime.pdb
+F:\UserManager\bin\EntityFramework.xml
+F:\UserManager\bin\EntityFramework.SqlServer.xml
+F:\UserManager\bin\Microsoft.AspNet.Identity.Core.xml
+F:\UserManager\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+F:\UserManager\bin\Microsoft.AspNet.Identity.Owin.xml
+F:\UserManager\bin\Microsoft.Owin.xml
+F:\UserManager\bin\Microsoft.Owin.Host.SystemWeb.xml
+F:\UserManager\bin\Microsoft.Owin.Security.xml
+F:\UserManager\bin\Microsoft.Owin.Security.Cookies.xml
+F:\UserManager\bin\Microsoft.Owin.Security.Facebook.xml
+F:\UserManager\bin\Microsoft.Owin.Security.Google.xml
+F:\UserManager\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+F:\UserManager\bin\Microsoft.Owin.Security.OAuth.xml
+F:\UserManager\bin\Microsoft.Owin.Security.Twitter.xml
+F:\UserManager\bin\Newtonsoft.Json.xml
+F:\UserManager\bin\System.Web.Helpers.xml
+F:\UserManager\bin\System.Web.Mvc.xml
+F:\UserManager\bin\System.Web.Optimization.xml
+F:\UserManager\bin\System.Web.Razor.xml
+F:\UserManager\bin\System.Web.WebPages.xml
+F:\UserManager\bin\System.Web.WebPages.Deployment.xml
+F:\UserManager\bin\System.Web.WebPages.Razor.xml
+F:\UserManager\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\UserManager\obj\Debug\SchoolManager.csprojAssemblyReference.cache
+F:\UserManager\obj\Debug\SchoolManager.csproj.CopyComplete
+F:\UserManager\obj\Debug\QuanLyCongViec.dll
+F:\UserManager\obj\Debug\QuanLyCongViec.pdb
+F:\TruongMamNon\obj\Debug\SchoolManager.csprojAssemblyReference.cache
+F:\TruongMamNon\obj\Debug\QuanLyCongViec.dll
+F:\TruongMamNon\obj\Debug\QuanLyCongViec.pdb
+F:\TruongMamNon\bin\QuanLyCongViec.dll.config
+F:\TruongMamNon\bin\QuanLyCongViec.dll
+F:\TruongMamNon\bin\QuanLyCongViec.pdb
+F:\TruongMamNon\bin\roslyn\csc.exe
+F:\TruongMamNon\bin\roslyn\csc.exe.config
+F:\TruongMamNon\bin\roslyn\csc.rsp
+F:\TruongMamNon\bin\roslyn\csi.exe
+F:\TruongMamNon\bin\roslyn\csi.rsp
+F:\TruongMamNon\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\TruongMamNon\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\TruongMamNon\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+F:\TruongMamNon\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\TruongMamNon\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+F:\TruongMamNon\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\TruongMamNon\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\TruongMamNon\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+F:\TruongMamNon\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+F:\TruongMamNon\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\TruongMamNon\bin\roslyn\System.AppContext.dll
+F:\TruongMamNon\bin\roslyn\System.Collections.Immutable.dll
+F:\TruongMamNon\bin\roslyn\System.Diagnostics.StackTrace.dll
+F:\TruongMamNon\bin\roslyn\System.IO.FileSystem.dll
+F:\TruongMamNon\bin\roslyn\System.IO.FileSystem.Primitives.dll
+F:\TruongMamNon\bin\roslyn\System.Reflection.Metadata.dll
+F:\TruongMamNon\bin\roslyn\vbc.exe
+F:\TruongMamNon\bin\roslyn\vbc.exe.config
+F:\TruongMamNon\bin\roslyn\vbc.rsp
+F:\TruongMamNon\bin\roslyn\VBCSCompiler.exe
+F:\TruongMamNon\bin\roslyn\VBCSCompiler.exe.config
+F:\TruongMamNon\bin\Antlr3.Runtime.dll
+F:\TruongMamNon\bin\EntityFramework.dll
+F:\TruongMamNon\bin\EntityFramework.SqlServer.dll
+F:\TruongMamNon\bin\Microsoft.AspNet.Identity.Core.dll
+F:\TruongMamNon\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+F:\TruongMamNon\bin\Microsoft.AspNet.Identity.Owin.dll
+F:\TruongMamNon\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\TruongMamNon\bin\Microsoft.Owin.dll
+F:\TruongMamNon\bin\Microsoft.Owin.Host.SystemWeb.dll
+F:\TruongMamNon\bin\Microsoft.Owin.Security.Cookies.dll
+F:\TruongMamNon\bin\Microsoft.Owin.Security.dll
+F:\TruongMamNon\bin\Microsoft.Owin.Security.Facebook.dll
+F:\TruongMamNon\bin\Microsoft.Owin.Security.Google.dll
+F:\TruongMamNon\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+F:\TruongMamNon\bin\Microsoft.Owin.Security.OAuth.dll
+F:\TruongMamNon\bin\Microsoft.Owin.Security.Twitter.dll
+F:\TruongMamNon\bin\Microsoft.Web.Infrastructure.dll
+F:\TruongMamNon\bin\Newtonsoft.Json.dll
+F:\TruongMamNon\bin\Owin.dll
+F:\TruongMamNon\bin\System.Web.Helpers.dll
+F:\TruongMamNon\bin\System.Web.Mvc.dll
+F:\TruongMamNon\bin\System.Web.Optimization.dll
+F:\TruongMamNon\bin\System.Web.Razor.dll
+F:\TruongMamNon\bin\System.Web.WebPages.Deployment.dll
+F:\TruongMamNon\bin\System.Web.WebPages.dll
+F:\TruongMamNon\bin\System.Web.WebPages.Razor.dll
+F:\TruongMamNon\bin\WebGrease.dll
+F:\TruongMamNon\bin\Antlr3.Runtime.pdb
+F:\TruongMamNon\bin\EntityFramework.xml
+F:\TruongMamNon\bin\EntityFramework.SqlServer.xml
+F:\TruongMamNon\bin\Microsoft.AspNet.Identity.Core.xml
+F:\TruongMamNon\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+F:\TruongMamNon\bin\Microsoft.AspNet.Identity.Owin.xml
+F:\TruongMamNon\bin\Microsoft.Owin.xml
+F:\TruongMamNon\bin\Microsoft.Owin.Host.SystemWeb.xml
+F:\TruongMamNon\bin\Microsoft.Owin.Security.xml
+F:\TruongMamNon\bin\Microsoft.Owin.Security.Cookies.xml
+F:\TruongMamNon\bin\Microsoft.Owin.Security.Facebook.xml
+F:\TruongMamNon\bin\Microsoft.Owin.Security.Google.xml
+F:\TruongMamNon\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+F:\TruongMamNon\bin\Microsoft.Owin.Security.OAuth.xml
+F:\TruongMamNon\bin\Microsoft.Owin.Security.Twitter.xml
+F:\TruongMamNon\bin\Newtonsoft.Json.xml
+F:\TruongMamNon\bin\System.Web.Helpers.xml
+F:\TruongMamNon\bin\System.Web.Mvc.xml
+F:\TruongMamNon\bin\System.Web.Optimization.xml
+F:\TruongMamNon\bin\System.Web.Razor.xml
+F:\TruongMamNon\bin\System.Web.WebPages.xml
+F:\TruongMamNon\bin\System.Web.WebPages.Deployment.xml
+F:\TruongMamNon\bin\System.Web.WebPages.Razor.xml
+F:\TruongMamNon\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\TruongMamNon\obj\Debug\SchoolManager.csproj.CopyComplete
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\roslyn\csc.exe
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\roslyn\csc.exe.config
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\roslyn\csc.rsp
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\roslyn\csi.exe
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\roslyn\csi.rsp
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\roslyn\System.AppContext.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\roslyn\vbc.exe
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\roslyn\vbc.exe.config
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\roslyn\vbc.rsp
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\roslyn\VBCSCompiler.exe
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Antlr3.Runtime.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\EntityFramework.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\EntityFramework.SqlServer.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Microsoft.Owin.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Microsoft.Owin.Security.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Newtonsoft.Json.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Owin.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\System.Web.Helpers.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\System.Web.Mvc.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\System.Web.Optimization.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\System.Web.Razor.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\System.Web.WebPages.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\System.Web.WebPages.Razor.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\WebGrease.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Antlr3.Runtime.pdb
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\EntityFramework.xml
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\EntityFramework.SqlServer.xml
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Microsoft.Owin.xml
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Microsoft.Owin.Security.xml
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Newtonsoft.Json.xml
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\System.Web.Helpers.xml
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\System.Web.Mvc.xml
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\System.Web.Optimization.xml
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\System.Web.Razor.xml
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\System.Web.WebPages.xml
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\System.Web.WebPages.Razor.xml
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\obj\Debug\SchoolManager.csprojAssemblyReference.cache
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\obj\Debug\SchoolManager.csproj.CopyComplete
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\SchoolManager.dll.config
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\SchoolManager.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\bin\SchoolManager.pdb
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\obj\Debug\SchoolManager.dll
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\obj\Debug\SchoolManager.pdb
+C:\Users\Admin\OneDrive\DO AN Thue\TruongMamNon\obj\Debug\SchoolManager.csproj.CoreCompileInputs.cache
+C:\Users\admin\Downloads\TruongMamNon018\bin\SchoolManager.dll.config
+C:\Users\admin\Downloads\TruongMamNon018\bin\SchoolManager.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\SchoolManager.pdb
+C:\Users\admin\Downloads\TruongMamNon018\bin\roslyn\csc.exe
+C:\Users\admin\Downloads\TruongMamNon018\bin\roslyn\csc.exe.config
+C:\Users\admin\Downloads\TruongMamNon018\bin\roslyn\csc.rsp
+C:\Users\admin\Downloads\TruongMamNon018\bin\roslyn\csi.exe
+C:\Users\admin\Downloads\TruongMamNon018\bin\roslyn\csi.rsp
+C:\Users\admin\Downloads\TruongMamNon018\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\admin\Downloads\TruongMamNon018\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\admin\Downloads\TruongMamNon018\bin\roslyn\System.AppContext.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\roslyn\vbc.exe
+C:\Users\admin\Downloads\TruongMamNon018\bin\roslyn\vbc.exe.config
+C:\Users\admin\Downloads\TruongMamNon018\bin\roslyn\vbc.rsp
+C:\Users\admin\Downloads\TruongMamNon018\bin\roslyn\VBCSCompiler.exe
+C:\Users\admin\Downloads\TruongMamNon018\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\admin\Downloads\TruongMamNon018\bin\Antlr3.Runtime.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\EntityFramework.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\EntityFramework.SqlServer.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\Microsoft.Owin.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\Microsoft.Owin.Security.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\Newtonsoft.Json.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\Owin.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\System.Web.Helpers.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\System.Web.Mvc.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\System.Web.Optimization.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\System.Web.Razor.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\System.Web.WebPages.Deployment.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\System.Web.WebPages.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\System.Web.WebPages.Razor.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\WebGrease.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\Antlr3.Runtime.pdb
+C:\Users\admin\Downloads\TruongMamNon018\bin\EntityFramework.xml
+C:\Users\admin\Downloads\TruongMamNon018\bin\EntityFramework.SqlServer.xml
+C:\Users\admin\Downloads\TruongMamNon018\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\admin\Downloads\TruongMamNon018\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\admin\Downloads\TruongMamNon018\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\admin\Downloads\TruongMamNon018\bin\Microsoft.Owin.xml
+C:\Users\admin\Downloads\TruongMamNon018\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\admin\Downloads\TruongMamNon018\bin\Microsoft.Owin.Security.xml
+C:\Users\admin\Downloads\TruongMamNon018\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\admin\Downloads\TruongMamNon018\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\admin\Downloads\TruongMamNon018\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\admin\Downloads\TruongMamNon018\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\admin\Downloads\TruongMamNon018\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\admin\Downloads\TruongMamNon018\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\admin\Downloads\TruongMamNon018\bin\Newtonsoft.Json.xml
+C:\Users\admin\Downloads\TruongMamNon018\bin\System.Web.Helpers.xml
+C:\Users\admin\Downloads\TruongMamNon018\bin\System.Web.Mvc.xml
+C:\Users\admin\Downloads\TruongMamNon018\bin\System.Web.Optimization.xml
+C:\Users\admin\Downloads\TruongMamNon018\bin\System.Web.Razor.xml
+C:\Users\admin\Downloads\TruongMamNon018\bin\System.Web.WebPages.xml
+C:\Users\admin\Downloads\TruongMamNon018\bin\System.Web.WebPages.Deployment.xml
+C:\Users\admin\Downloads\TruongMamNon018\bin\System.Web.WebPages.Razor.xml
+C:\Users\admin\Downloads\TruongMamNon018\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\admin\Downloads\TruongMamNon018\obj\Debug\SchoolManager.csprojAssemblyReference.cache
+C:\Users\admin\Downloads\TruongMamNon018\obj\Debug\SchoolManager.csproj.CoreCompileInputs.cache
+C:\Users\admin\Downloads\TruongMamNon018\obj\Debug\SchoolManager.csproj.CopyComplete
+C:\Users\admin\Downloads\TruongMamNon018\obj\Debug\SchoolManager.dll
+C:\Users\admin\Downloads\TruongMamNon018\obj\Debug\SchoolManager.pdb
+C:\Users\admin\Downloads\TruongMamNon018\bin\ClosedXML.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\DocumentFormat.OpenXml.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\ExcelNumberFormat.dll
+C:\Users\admin\Downloads\TruongMamNon018\bin\ClosedXML.pdb
+C:\Users\admin\Downloads\TruongMamNon018\bin\ClosedXML.xml
+C:\Users\admin\Downloads\TruongMamNon018\bin\DocumentFormat.OpenXml.xml
+C:\Users\admin\Downloads\TruongMamNon018\bin\ExcelNumberFormat.xml
+C:\Users\admin\Downloads\TruongMamNon0108\bin\SchoolManager.dll.config
+C:\Users\admin\Downloads\TruongMamNon0108\bin\SchoolManager.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\SchoolManager.pdb
+C:\Users\admin\Downloads\TruongMamNon0108\bin\roslyn\csc.exe
+C:\Users\admin\Downloads\TruongMamNon0108\bin\roslyn\csc.exe.config
+C:\Users\admin\Downloads\TruongMamNon0108\bin\roslyn\csc.rsp
+C:\Users\admin\Downloads\TruongMamNon0108\bin\roslyn\csi.exe
+C:\Users\admin\Downloads\TruongMamNon0108\bin\roslyn\csi.rsp
+C:\Users\admin\Downloads\TruongMamNon0108\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\admin\Downloads\TruongMamNon0108\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\admin\Downloads\TruongMamNon0108\bin\roslyn\System.AppContext.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\roslyn\vbc.exe
+C:\Users\admin\Downloads\TruongMamNon0108\bin\roslyn\vbc.exe.config
+C:\Users\admin\Downloads\TruongMamNon0108\bin\roslyn\vbc.rsp
+C:\Users\admin\Downloads\TruongMamNon0108\bin\roslyn\VBCSCompiler.exe
+C:\Users\admin\Downloads\TruongMamNon0108\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Antlr3.Runtime.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\ClosedXML.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\DocumentFormat.OpenXml.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\EntityFramework.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\EntityFramework.SqlServer.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\ExcelNumberFormat.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Microsoft.Owin.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Microsoft.Owin.Security.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Newtonsoft.Json.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Owin.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\System.Web.Helpers.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\System.Web.Mvc.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\System.Web.Optimization.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\System.Web.Razor.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\System.Web.WebPages.Deployment.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\System.Web.WebPages.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\System.Web.WebPages.Razor.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\WebGrease.dll
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Antlr3.Runtime.pdb
+C:\Users\admin\Downloads\TruongMamNon0108\bin\ClosedXML.pdb
+C:\Users\admin\Downloads\TruongMamNon0108\bin\ClosedXML.xml
+C:\Users\admin\Downloads\TruongMamNon0108\bin\DocumentFormat.OpenXml.xml
+C:\Users\admin\Downloads\TruongMamNon0108\bin\EntityFramework.xml
+C:\Users\admin\Downloads\TruongMamNon0108\bin\EntityFramework.SqlServer.xml
+C:\Users\admin\Downloads\TruongMamNon0108\bin\ExcelNumberFormat.xml
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Microsoft.Owin.xml
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Microsoft.Owin.Security.xml
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Newtonsoft.Json.xml
+C:\Users\admin\Downloads\TruongMamNon0108\bin\System.Web.Helpers.xml
+C:\Users\admin\Downloads\TruongMamNon0108\bin\System.Web.Mvc.xml
+C:\Users\admin\Downloads\TruongMamNon0108\bin\System.Web.Optimization.xml
+C:\Users\admin\Downloads\TruongMamNon0108\bin\System.Web.Razor.xml
+C:\Users\admin\Downloads\TruongMamNon0108\bin\System.Web.WebPages.xml
+C:\Users\admin\Downloads\TruongMamNon0108\bin\System.Web.WebPages.Deployment.xml
+C:\Users\admin\Downloads\TruongMamNon0108\bin\System.Web.WebPages.Razor.xml
+C:\Users\admin\Downloads\TruongMamNon0108\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\admin\Downloads\TruongMamNon0108\obj\Debug\SchoolManager.csprojAssemblyReference.cache
+C:\Users\admin\Downloads\TruongMamNon0108\obj\Debug\SchoolManager.csproj.CoreCompileInputs.cache
+C:\Users\admin\Downloads\TruongMamNon0108\obj\Debug\SchoolManager.csproj.CopyComplete
+C:\Users\admin\Downloads\TruongMamNon0108\obj\Debug\SchoolManager.dll
+C:\Users\admin\Downloads\TruongMamNon0108\obj\Debug\SchoolManager.pdb
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\SchoolManager.dll.config
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\SchoolManager.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\SchoolManager.pdb
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\roslyn\csc.exe
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\roslyn\csc.exe.config
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\roslyn\csc.rsp
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\roslyn\csi.exe
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\roslyn\csi.rsp
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\roslyn\System.AppContext.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\roslyn\vbc.exe
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\roslyn\vbc.exe.config
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\roslyn\vbc.rsp
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\roslyn\VBCSCompiler.exe
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Antlr3.Runtime.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\ClosedXML.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\DocumentFormat.OpenXml.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\EntityFramework.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\EntityFramework.SqlServer.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\ExcelNumberFormat.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Microsoft.Owin.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Microsoft.Owin.Security.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Newtonsoft.Json.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Owin.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\System.Web.Helpers.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\System.Web.Mvc.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\System.Web.Optimization.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\System.Web.Razor.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\System.Web.WebPages.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\System.Web.WebPages.Razor.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\WebGrease.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Antlr3.Runtime.pdb
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\ClosedXML.pdb
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\ClosedXML.xml
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\DocumentFormat.OpenXml.xml
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\EntityFramework.xml
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\EntityFramework.SqlServer.xml
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\ExcelNumberFormat.xml
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Microsoft.Owin.xml
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Microsoft.Owin.Security.xml
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Newtonsoft.Json.xml
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\System.Web.Helpers.xml
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\System.Web.Mvc.xml
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\System.Web.Optimization.xml
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\System.Web.Razor.xml
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\System.Web.WebPages.xml
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\System.Web.WebPages.Razor.xml
+C:\Users\Admin\Desktop\TruongMamNon0108\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Admin\Desktop\TruongMamNon0108\obj\Debug\SchoolManager.csprojAssemblyReference.cache
+C:\Users\Admin\Desktop\TruongMamNon0108\obj\Debug\SchoolManager.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\TruongMamNon0108\obj\Debug\SchoolManager.csproj.CopyComplete
+C:\Users\Admin\Desktop\TruongMamNon0108\obj\Debug\SchoolManager.dll
+C:\Users\Admin\Desktop\TruongMamNon0108\obj\Debug\SchoolManager.pdb
+E:\TruongMamNon0108\bin\SchoolManager.dll.config
+E:\TruongMamNon0108\bin\SchoolManager.dll
+E:\TruongMamNon0108\bin\SchoolManager.pdb
+E:\TruongMamNon0108\bin\roslyn\csc.exe
+E:\TruongMamNon0108\bin\roslyn\csc.exe.config
+E:\TruongMamNon0108\bin\roslyn\csc.rsp
+E:\TruongMamNon0108\bin\roslyn\csi.exe
+E:\TruongMamNon0108\bin\roslyn\csi.rsp
+E:\TruongMamNon0108\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\TruongMamNon0108\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\TruongMamNon0108\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\TruongMamNon0108\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\TruongMamNon0108\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\TruongMamNon0108\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\TruongMamNon0108\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\TruongMamNon0108\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\TruongMamNon0108\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\TruongMamNon0108\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\TruongMamNon0108\bin\roslyn\System.AppContext.dll
+E:\TruongMamNon0108\bin\roslyn\System.Collections.Immutable.dll
+E:\TruongMamNon0108\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\TruongMamNon0108\bin\roslyn\System.IO.FileSystem.dll
+E:\TruongMamNon0108\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\TruongMamNon0108\bin\roslyn\System.Reflection.Metadata.dll
+E:\TruongMamNon0108\bin\roslyn\vbc.exe
+E:\TruongMamNon0108\bin\roslyn\vbc.exe.config
+E:\TruongMamNon0108\bin\roslyn\vbc.rsp
+E:\TruongMamNon0108\bin\roslyn\VBCSCompiler.exe
+E:\TruongMamNon0108\bin\roslyn\VBCSCompiler.exe.config
+E:\TruongMamNon0108\bin\Antlr3.Runtime.dll
+E:\TruongMamNon0108\bin\ClosedXML.dll
+E:\TruongMamNon0108\bin\DocumentFormat.OpenXml.dll
+E:\TruongMamNon0108\bin\EntityFramework.dll
+E:\TruongMamNon0108\bin\EntityFramework.SqlServer.dll
+E:\TruongMamNon0108\bin\ExcelNumberFormat.dll
+E:\TruongMamNon0108\bin\Microsoft.AspNet.Identity.Core.dll
+E:\TruongMamNon0108\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\TruongMamNon0108\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\TruongMamNon0108\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\TruongMamNon0108\bin\Microsoft.Owin.dll
+E:\TruongMamNon0108\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\TruongMamNon0108\bin\Microsoft.Owin.Security.Cookies.dll
+E:\TruongMamNon0108\bin\Microsoft.Owin.Security.dll
+E:\TruongMamNon0108\bin\Microsoft.Owin.Security.Facebook.dll
+E:\TruongMamNon0108\bin\Microsoft.Owin.Security.Google.dll
+E:\TruongMamNon0108\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\TruongMamNon0108\bin\Microsoft.Owin.Security.OAuth.dll
+E:\TruongMamNon0108\bin\Microsoft.Owin.Security.Twitter.dll
+E:\TruongMamNon0108\bin\Microsoft.Web.Infrastructure.dll
+E:\TruongMamNon0108\bin\Newtonsoft.Json.dll
+E:\TruongMamNon0108\bin\Owin.dll
+E:\TruongMamNon0108\bin\System.Web.Helpers.dll
+E:\TruongMamNon0108\bin\System.Web.Mvc.dll
+E:\TruongMamNon0108\bin\System.Web.Optimization.dll
+E:\TruongMamNon0108\bin\System.Web.Razor.dll
+E:\TruongMamNon0108\bin\System.Web.WebPages.Deployment.dll
+E:\TruongMamNon0108\bin\System.Web.WebPages.dll
+E:\TruongMamNon0108\bin\System.Web.WebPages.Razor.dll
+E:\TruongMamNon0108\bin\WebGrease.dll
+E:\TruongMamNon0108\bin\Antlr3.Runtime.pdb
+E:\TruongMamNon0108\bin\ClosedXML.pdb
+E:\TruongMamNon0108\bin\ClosedXML.xml
+E:\TruongMamNon0108\bin\DocumentFormat.OpenXml.xml
+E:\TruongMamNon0108\bin\EntityFramework.xml
+E:\TruongMamNon0108\bin\EntityFramework.SqlServer.xml
+E:\TruongMamNon0108\bin\ExcelNumberFormat.xml
+E:\TruongMamNon0108\bin\Microsoft.AspNet.Identity.Core.xml
+E:\TruongMamNon0108\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\TruongMamNon0108\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\TruongMamNon0108\bin\Microsoft.Owin.xml
+E:\TruongMamNon0108\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\TruongMamNon0108\bin\Microsoft.Owin.Security.xml
+E:\TruongMamNon0108\bin\Microsoft.Owin.Security.Cookies.xml
+E:\TruongMamNon0108\bin\Microsoft.Owin.Security.Facebook.xml
+E:\TruongMamNon0108\bin\Microsoft.Owin.Security.Google.xml
+E:\TruongMamNon0108\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\TruongMamNon0108\bin\Microsoft.Owin.Security.OAuth.xml
+E:\TruongMamNon0108\bin\Microsoft.Owin.Security.Twitter.xml
+E:\TruongMamNon0108\bin\Newtonsoft.Json.xml
+E:\TruongMamNon0108\bin\System.Web.Helpers.xml
+E:\TruongMamNon0108\bin\System.Web.Mvc.xml
+E:\TruongMamNon0108\bin\System.Web.Optimization.xml
+E:\TruongMamNon0108\bin\System.Web.Razor.xml
+E:\TruongMamNon0108\bin\System.Web.WebPages.xml
+E:\TruongMamNon0108\bin\System.Web.WebPages.Deployment.xml
+E:\TruongMamNon0108\bin\System.Web.WebPages.Razor.xml
+E:\TruongMamNon0108\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\TruongMamNon0108\obj\Debug\SchoolManager.csprojAssemblyReference.cache
+E:\TruongMamNon0108\obj\Debug\SchoolManager.csproj.CoreCompileInputs.cache
+E:\TruongMamNon0108\obj\Debug\SchoolManager.csproj.CopyComplete
+E:\TruongMamNon0108\obj\Debug\SchoolManager.dll
+E:\TruongMamNon0108\obj\Debug\SchoolManager.pdb

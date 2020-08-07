@@ -1,0 +1,132 @@
+﻿@using SchoolManager.Models;
+
+@{
+    ViewBag.Title = "Chi tiết Phụ huynh";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    TruongMamNonEntities db = new TruongMamNonEntities();
+    string Id = ViewBag.Id;
+    AspNetUser user = db.AspNetUsers.Where(x => x.Id == Id).FirstOrDefault();
+}
+
+<div class="block-header">
+    <div class="row">
+        <div class="col-lg-6 col-md-8 col-sm-12">
+            <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i class="fa fa-arrow-left"></i></a>@ViewBag.Title</h2>
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index-2.html"><i class="icon-home"></i></a></li>
+                <li class="breadcrumb-item">Phụ huynh</li>
+                <li class="breadcrumb-item active">@ViewBag.Title</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12">
+        @using (Html.BeginForm("EditPhuHuynh", "VanPhong", FormMethod.Post, new { role = "form", @enctype = "multipart/form-data" }))
+        {
+            <div class="card client-detail">
+                <div class="body row">
+                    <div class="profile-image col-md-3">
+                        <img class="img-thumbnail" src="../../UserUpload/img/account/@user.img" alt="@user.PhuHuynh.HoTen">
+                    </div>
+                    <div class="details col-md-8">
+                        <h4 class="m-t-0 m-b-0"><strong class="showGV">@user.PhuHuynh.HoTen</strong></h4>
+                        <input placeholder="Nhập họ tên" name="HoTen" class="form-control showEditGV" type="text" value="@user.PhuHuynh.HoTen" />
+                        <p>Năm sinh: <b class="showGV">@(user.PhuHuynh.NamSinh ?? "chưa có")</b></p>
+                        <input placeholder="Nhập Năm sinh" name="NamSinh" class="form-control showEditGV" type="number" value="@user.PhuHuynh.NamSinh.Trim()" />
+
+                        <p>Email: <b class="showGV">@(user.Email ?? "chưa có")</b></p>
+                        <input placeholder="Nhập email" name="Email" class="form-control showEditGV" type="text" value="@user.Email" />
+
+                        <p>Tài khoản: @(user.UserName ?? "chưa có")</p>
+
+                        <p>Điện thoại: <b class="showGV">@(user.PhuHuynh.SDT ?? "chưa có")</b></p>
+                        <input placeholder="Nhập số Điện thoại" name="SDT" class="form-control showEditGV" type="text" value="@user.PhuHuynh.SDT" />
+
+                        <p>Nơi công tác: <b class="showGV">@(user.PhuHuynh.NoiCongTac ?? "chưa có")</b></p>
+                        <input placeholder="Nhập Nơi công tác" name="NoiCongTac" class="form-control showEditGV" type="text" value="@user.PhuHuynh.NoiCongTac" />
+
+                        <div class="m-t-15" style="float: right">
+                            <a class="btn btn-warning showGV" onclick="EditGV();"><i class="fa fa-edit"></i> Sửa</a>
+                            <button class="btn btn-danger showGV" onclick="DeleteAcc('@user.Id')"><i class="fa fa-trash-o"></i> Xóa</button>
+                            <button class="btn btn-primary showEditGV" type="submit"><i class="fa fa-check"></i> Lưu thay đổi</button>
+                            <a href="javascript:void(0)" class="btn btn-danger showEditGV" onclick="CancelEditGV();">Hủy thay đổi</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="row clearfix mb-5">
+    <div class="col-md-12">
+        <h5>Là Phụ huynh của học sinh: </h5>
+    </div>
+
+
+    @foreach (var item in user.PhuHuynh.PhuHuynh_HocSinh.ToList())
+    {
+
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="card">
+                <div class="body text-center">
+                    <div class="" data-percent="50"> <span><img src="../../UserUpload/img/hocsinh/@item.HocSinh.img" alt="user" class="rounded-circle Responsive image img-thumbnail" /></span> </div>
+                    <h5>@item.HocSinh.HoTen</h5>
+                    <small>Quan hệ với học sinh</small>
+                    <h6>@item.QuanHe</h6>
+                    <div class="m-t-15">
+                        <a href="@Url.Action("ChitietHocsinh", "VanPhong", new { Id = item.HocSinh.Id})" class="btn btn-sm btn-primary">Xem thông tin</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+<script type="text/javascript" language="javascript">
+    $('.showEditGV').hide();
+
+    function CancelEditGV() {
+        $('.showGV').show();
+        $('.showEditGV').hide();
+    }
+    function DeleteAcc(Id) {
+        var rowAcc = "#rowAcc_" + Id;
+        var data = {
+                id: Id
+        };
+
+        Swal.fire({
+            icon: 'warning',
+              title: 'Bạn chắc chắn chứ?',
+              text: "Toàn bộ các thông tin liên quan đến Phụ huynh cũng sẽ bị xóa!",
+              type: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+          cancelButtonText: 'Đừng xóa',
+          confirmButtonText: 'Xóa luôn đi!',
+        }).then((result) => {
+          if (result.value) {
+            $.ajax({
+            type: "POST",
+            url: "@Url.Action("Delete", "UsersAdmin" )",
+            data: data,
+            content: 'application/json; charset=utf-8',
+            success: function (data) {
+                $(rowAcc).hide();
+                Swal.fire('Thành công!','Đã xóa tài khoản.','success');
+            }
+            });
+          }
+        })
+    }
+    function EditGV() {
+        
+        $('.showGV').hide();
+        $('.showEditGV').show();
+         
+    }
+</script>

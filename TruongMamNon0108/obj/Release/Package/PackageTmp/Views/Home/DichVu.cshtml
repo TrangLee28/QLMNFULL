@@ -1,0 +1,57 @@
+﻿@using SchoolManager.Models;
+@{
+    ViewBag.Title = "Dịch vụ";
+    TruongMamNonEntities db = new TruongMamNonEntities();
+}
+<section class="page-title" style="background-image:url(images/background/5.jpg);">
+    <div class="auto-container">
+        <div class="inner-box">
+            <h1>Dịch vụ</h1>
+            <ul class="bread-crumb">
+                <li><a href="index-2.html">Trang chủ</a></li>
+                <li>Dịch vụ</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!--End Page Title-->
+
+<section class="classes-section">
+    <div class="auto-container">
+        <div class="row">
+            @foreach (var item in db.DichVus.Where(x => x.TrangThai).ToList())
+            {
+                <div class="news-style-two col-md-4">
+                    <div class="inner-box">
+                        <!--Image Column-->
+                        <div class="image-column">
+                            <div class="image">
+                                <a href="@Url.Action("ChiTietDichVu","Home", new { Id = item.Id})"><img src="/Content/UserUpload/img/dichvu/@String.Format(item.Id.ToString()+".png")" alt="" /></a>
+                                <span class="category">@item.LoaiDV.TenLoaiDV</span>
+                                <div class="overlay-layer">
+                                    <a href="@Url.Action("ChiTietDichVu","Home", new { Id = item.Id})"><span class="icon flaticon-unlink"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Content Column-->
+                        <div class="content-column">
+                            <div class="inner">
+                                @*<div class="post-date">Feb 29, 2017</div>*@
+                                <h3><a href="@Url.Action("ChiTietDichVu","Home", new { Id = item.Id})">@item.TenDichVu</a></h3>
+                                <div class="text">Giá dịch vụ: @item.Gia</div>
+                                <a href="@Url.Action("DangKyDichVu","Home", new { Id = item.Id})" class="theme-btn btn-style-one">Đăng ký ngay</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+            <!--News Style Two-->
+
+
+
+        </div>
+
+
+    </div>
+</section>

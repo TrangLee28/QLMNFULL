@@ -1,0 +1,124 @@
+﻿@model List<SchoolManager.Models.ListDiemDanhHocSinhModel>
+
+@{
+    Layout = null;
+    //Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    string name = "";
+}
+
+@if (Model.Count() > 0)
+{
+    <div class="block-header">
+        <div class="row">
+            @*<div class="col-lg-6 col-md-4 col-sm-12 text-right">
+                    <div class="bh_chart hidden-xs">
+                        <div class="float-left m-r-15">
+                            <small>Visitors</small>
+                            <h6 class="mb-0 mt-1"><i class="icon-user"></i> 1,784</h6>
+                        </div>
+                    </div>
+                    <div class="bh_chart hidden-sm">
+                        <div class="float-left m-r-15">
+                            <small>Visits</small>
+                            <h6 class="mb-0 mt-1"><i class="icon-globe"></i> 325</h6>
+                        </div>
+                    </div>
+                    <div class="bh_chart hidden-sm">
+                        <div class="float-left m-r-15">
+                            <small>Chats</small>
+                            <h6 class="mb-0 mt-1"><i class="icon-bubbles"></i> 13</h6>
+                        </div>
+                    </div>
+                </div>*@
+            <div class="col-lg-3 text-left">
+                <i class="icon-close text-danger"></i> Vắng không phép<br />
+                <i class="icon-check  text-success"></i> Đã điểm danh<br />
+            </div>
+            <div class="col-lg-3 text-left">
+                <i class="icon-hourglass"></i> Ngày nghỉ<br />
+                <i class="icon-clock text-muted"></i> Ngày chưa đến
+            </div>
+        </div>
+    </div>
+
+    <div class="row clearfix">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Học sinh</th>
+                                    @for (int j = 1; j <= ViewBag.songay + 1; j++)
+                                    {
+                                        <th>@j</th>
+                                    }
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    if (name != item.HoTen)
+                                    {
+                                        @Html.Raw("<tr>")
+                                    <td>@item.HoTen</td>
+                                        if (item.TrangThaiDi == "trống")
+                                        {
+                                        <td title="trống">@*<i class="icon-clock  text-muted"></i>*@ </td>
+                                        }
+                                        if (item.TrangThaiDi == "ngày nghỉ")
+                                        {
+                                        <td title="ngày nghỉ"><i class="icon-hourglass text-dark"></i> </td>
+                                        }
+                                        if (item.TrangThaiDi == "đi" && item.TrangThaiVe == "đi")
+                                        {
+                                        <td title="đã điểm danh"><i class="icon-check  text-success"></i></td>
+                                        }
+                                        if (item.TrangThaiDi == "đi" && item.TrangThaiVe == "vắng")
+                                        {
+                                        <td><i title="đã điểm danh đi" class="icon-check  text-success"></i> <br /><i title="chưa điểm danh về" class="icon-close  text-danger"></i></td>
+                                        }
+                                        if (item.TrangThaiDi == "vắng")
+                                        {
+                                        <td title="vắng"><i class="icon-close  text-danger"></i> </td>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (item.TrangThaiDi == "trống")
+                                        {
+                                        <td title="trống">@*<i class="icon-clock  text-muted"></i>*@ </td>
+                                        }
+                                        if (item.TrangThaiDi == "ngày nghỉ")
+                                        {
+                                        <td title="ngày nghỉ"><i class="icon-hourglass text-dark"></i> </td>
+                                        }
+                                        if (item.TrangThaiDi == "đi" && item.TrangThaiVe == "đi")
+                                        {
+                                        <td title="đã điểm danh"><i class="icon-check  text-success"></i></td>
+                                        }
+                                        if (item.TrangThaiDi == "đi" && item.TrangThaiVe == "vắng")
+                                        {
+                                        <td><i title="đã điểm danh đi" class="icon-check  text-success"></i> <br /><i title="chưa điểm danh về" class="icon-close  text-danger"></i></td>
+                                        }
+                                        if (item.TrangThaiDi == "vắng")
+                                        {
+                                        <td title="vắng"><i class="icon-close  text-danger"></i> </td>
+                                        }
+                                    }
+                                    name = item.HoTen;
+
+                                }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+}
+else { 
+<span>chưa có dữ liệu</span>
+}
